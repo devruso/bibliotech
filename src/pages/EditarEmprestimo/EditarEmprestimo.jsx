@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
@@ -8,7 +8,7 @@ import { getLivro, getLivros } from "../../firebase/livros"
 
 export function EditarEmprestimo() {
 
-    const {id} = useParams();
+    const { id } = useParams();
 
     const [livros, setLivros] = useState([]);
 
@@ -19,7 +19,7 @@ export function EditarEmprestimo() {
     function onSubmit(data) {
         getLivro(data.idLivro).then(livro => {
             delete data.idLivro;
-            let editEmprestimo = {...data, livro};
+            let editEmprestimo = { ...data, livro };
             updateEmprestimo(id, editEmprestimo).then(() => {
                 toast.success("Empréstimo editado com sucesso!", { duration: 2000, position: "bottom-right" })
                 navigate("/emprestimos");
@@ -83,9 +83,11 @@ export function EditarEmprestimo() {
                             {errors.status?.message}
                         </Form.Text>
                     </Form.Group>
-                    <Button type="submit" variant="success">Editar</Button>
+                    <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para editar</Tooltip>} >
+                        <Button type="submit" variant="success">Editar</Button>
+                    </OverlayTrigger>
                 </Form>
             </Container>
-        </div>
+        </div >
     );
 }
