@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { getLivro, updateLivro, uploadCapaLivro } from "../../firebase/livros";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export function EditarLivro() {
 
@@ -11,6 +13,9 @@ export function EditarLivro() {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const navigate = useNavigate();
+
+    const resultado = useContext(ThemeContext);
+    const temaEscuro = resultado.temaEscuro;
 
     function onSubmit(data) {
         const imagem = data.imagem[0];
@@ -43,7 +48,7 @@ export function EditarLivro() {
     }, [id, reset]);
 
     return (
-        <div className="editar-livro">
+        <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} editar-livro`}>
             <Container>
                 <h1>Editar livro</h1>
                 <hr />
