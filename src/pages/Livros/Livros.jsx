@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Badge, Button, Container, Table } from "react-bootstrap";
+import { Button, Container, OverlayTrigger, Table, Tooltip, Badge } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
@@ -35,9 +35,11 @@ export function Livros() {
             <Container>
                 <div className="d-flex justify-content-between align-items-center">
                     <h1>Livros</h1>
-                    <Button as={Link} to="/livros/adicionar" variant="success">
-                        Adicionar Livro
-                    </Button>
+                    <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para adicionar</Tooltip>}>
+                        <Button as={Link} to="/livros/adicionar" variant="success">
+                            Adicionar Livro
+                        </Button>
+                    </OverlayTrigger>
                 </div>
                 <hr />
                 {livros === null ?
@@ -70,18 +72,23 @@ export function Livros() {
                                             <img src={livro.urlCapa} alt={livro.titulo} />
                                         </td>
                                         <td>
-                                            <Button
-                                                as={Link}
-                                                to={`/livros/editar/${livro.id}`}
-                                                variant="warning"
-                                                size="sm"
-                                                className="me-2"
-                                            >
-                                                <i className="bi bi-pencil-fill"></i>
-                                            </Button>
-                                            <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
-                                                <i className="bi bi-trash3-fill"></i>
-                                            </Button>
+                                            <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para editar</Tooltip>}>
+                                                <Button
+                                                    as={Link}
+                                                    to={`/livros/editar/${livro.id}`}
+                                                    variant="warning"
+                                                    size="sm"
+                                                    className="me-2"
+                                                >
+                                                    <i className="bi bi-pencil-fill"></i>
+                                                </Button>
+                                            </OverlayTrigger>
+
+                                            <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para excluir</Tooltip>}>
+                                                <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
+                                                    <i className="bi bi-trash3-fill"></i>
+                                                </Button>
+                                            </OverlayTrigger>
                                         </td>
                                     </tr>
                                 )
