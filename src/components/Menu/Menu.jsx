@@ -45,15 +45,20 @@ export function Menu() {
             <Nav.Link as={Link} to="/emprestimos">
               Emprestimos
             </Nav.Link>
+            <Nav.Link as={Link}  to="/perfil/usuario">
+              Perfil do usuário
+            </Nav.Link>
             <Button variant="outline-light" onClick={alternar}>
               <img src={iconeBtn} width="16" alt="" />
               Alternar
             </Button>
+
             <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Logout</Tooltip>}>
               <Nav.Link onClick={onLogout}>
                 <i className="bi bi-box-arrow-right"></i>
               </Nav.Link>
             </OverlayTrigger>
+
           </Nav>
         </Navbar.Collapse>
       </Container>
