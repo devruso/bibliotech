@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { getLivro, updateLivro, uploadCapaLivro } from "../../firebase/livros";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export function EditarLivro() {
 
@@ -11,6 +13,9 @@ export function EditarLivro() {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const navigate = useNavigate();
+
+    const resultado = useContext(ThemeContext);
+    const temaEscuro = resultado.temaEscuro;
 
     function onSubmit(data) {
         const imagem = data.imagem[0];
@@ -43,7 +48,7 @@ export function EditarLivro() {
     }, [id, reset]);
 
     return (
-        <div className="editar-livro">
+        <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} editar-livro`}>
             <Container>
                 <h1>Editar livro</h1>
                 <hr />
@@ -62,14 +67,29 @@ export function EditarLivro() {
                             {errors.autor?.message}
                         </Form.Text>
                     </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Categoria</Form.Label>
-                        <Form.Control type="text" className={errors.categoria && "is-invalid"} {...register("categoria", { required: "Categoria é obrigatória!", maxLength: { value: 255, message: "Limite de 255 caracteres!" } })} />
-                        <Form.Text className="text-danger">
-                            {errors.categoria?.message}
-                        </Form.Text>
+                    <Form.Label>Categorias</Form.Label>
+                    <Form.Group className="mb-3" controlId="computacao">
+                        <Form.Check type="checkbox" label="Computação" name={"categorias"} value={"Computação"} {...register("categorias")} />
                     </Form.Group>
-                    <Form.Group className="mb-3">
+                    <Form.Group className="mb-3" controlId="educacao">
+                        <Form.Check type="checkbox" label="Educação" name={"categorias"} value={"Educação"} {...register("categorias")} />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="fantasia">
+                        <Form.Check type="checkbox" label="Fantasia" name={"categorias"} value={"Fantasia"} {...register("categorias")} />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="horror">
+                        <Form.Check type="checkbox" label="Horror" name={"categorias"} value={"Horror"} {...register("categorias")} />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="ficcaoCientifica">
+                        <Form.Check type="checkbox" label="Ficção Científica" name={"categorias"} value={"Ficção Científica"} {...register("categorias")} />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="suspense">
+                        <Form.Check type="checkbox" label="Suspense" name={"categorias"} value={"Suspense"} {...register("categorias")} />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="romance">
+                        <Form.Check type="checkbox" label="Romance" name={"categorias"} value={"Romance"} {...register("categorias")} />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>ISBN</Form.Label>
                         <Form.Control type="text" className={errors.isbn && "is-invalid"} {...register("isbn", { required: "ISBN é obrigatório!", maxLength: { value: 255, message: "Limite de 255 caracteres!" } })} />
                         <Form.Text className="text-danger">

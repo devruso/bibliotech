@@ -4,10 +4,12 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
+import facebookIcon from "../../assets/icons/facebook.png";
+
 import loginImg from "../../assets/images/login.png";
 import { PasswordField } from "../../components/PasswordField/PasswordField";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
+import { loginGoogle, loginEmailSenha, loginFacebook } from "../../firebase/auth";
 
 export function Login() {
   const {
@@ -53,6 +55,25 @@ export function Login() {
       });
   }
 
+  function onLoginFacebook() {
+loginFacebook()
+.then((user) => {
+  toast.success(`Bem-vindo(a) ${user.email}`, {
+    position: "bottom-right",
+    duration: 2500,
+  });
+  navigate("/");
+}) 
+.catch((erro) => {
+  
+  toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+    position: "bottom-right",
+    duration: 2500,
+  });
+});
+
+  }
+
   const usuarioLogado = useContext(AuthContext);
 
   // Se tiver dados no objeto, está logado
@@ -71,10 +92,15 @@ export function Login() {
 <Link to="/cadastro">Cadastre-se</Link></OverlayTrigger>
       </p>
       <hr />
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
-        <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
-        Google
-      </Button>
+      <div class="d-flex">
+  <button class="btn btn-danger mx-3 mb-3" onClick={onLoginGoogle}>
+    <img src={googleIcon} width="32" alt="Ícone do Google" /> Entrar com o Google
+  </button>
+  <Button className="btn btn-primary mx-3 mb-3" onClick={onLoginFacebook}>
+    <img src={facebookIcon} width="32" alt="Ícone do Facebook" /> Entrar com o Facebook
+  </Button>
+</div>
+
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
