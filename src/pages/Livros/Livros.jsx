@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Container, OverlayTrigger, Table, Tooltip } from "react-bootstrap";
+import { Button, Container, OverlayTrigger, Table, Tooltip, Badge } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
@@ -50,19 +50,23 @@ export function Livros() {
                             <tr>
                                 <th>Título</th>
                                 <th>Autor</th>
-                                <th>Categoria</th>
+                                <th>Categorias</th>
                                 <th>ISBN</th>
                                 <th>Imagem</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {livros.map(livro => {
+                            {livros.map((livro) => {
                                 return (
                                     <tr key={livro.id}>
                                         <td>{livro.titulo}</td>
                                         <td>{livro.autor}</td>
-                                        <td>{livro.categoria}</td>
+                                        <td style={{ maxWidth: "250px" }}>
+                                            {livro.categorias.map(categoria => {
+                                                return <Badge bg="success" className="me-1" key={categoria}>{categoria}</Badge>
+                                            })}
+                                        </td>
                                         <td>{livro.isbn}</td>
                                         <td>
                                             <img src={livro.urlCapa} alt={livro.titulo} />
