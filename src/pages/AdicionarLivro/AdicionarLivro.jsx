@@ -54,25 +54,25 @@ export function AdicionarLivro() {
                     </Form.Group>
                     <Form.Label>Categorias</Form.Label>
                     <Form.Group className="mb-3" controlId="computacao">
-                        <Form.Check type="checkbox" label="Computação" name={"categorias"} value={"Computação "} {...register("categorias")} />
+                        <Form.Check type="checkbox" label="Computação" name={"categorias"} value={"Computação"} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="educacao">
-                        <Form.Check type="checkbox" label="Educação" name={"categorias"} value={"Educação "} {...register("categorias")} />
+                        <Form.Check type="checkbox" label="Educação" name={"categorias"} value={"Educação"} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="fantasia">
-                        <Form.Check type="checkbox" label="Fantasia" name={"categorias"} value={"Fantasia "} {...register("categorias")} />
+                        <Form.Check type="checkbox" label="Fantasia" name={"categorias"} value={"Fantasia"} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="horror">
-                        <Form.Check type="checkbox" label="Horror" name={"categorias"} value={"Horror "} {...register("categorias")} />
+                        <Form.Check type="checkbox" label="Horror" name={"categorias"} value={"Horror"} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="ficcaoCientifica">
-                        <Form.Check type="checkbox" label="Ficção Científica" name={"categorias"} value={"Ficção Científica "} {...register("categorias")} />
+                        <Form.Check type="checkbox" label="Ficção Científica" name={"categorias"} value={"Ficção Científica"} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="suspense">
-                        <Form.Check type="checkbox" label="Suspense" name={"categorias"} value={"Suspense "} {...register("categorias")} />
+                        <Form.Check type="checkbox" label="Suspense" name={"categorias"} value={"Suspense"} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="romance">
-                        <Form.Check type="checkbox" label="Romance" name={"categorias"} value={"Romance "} {...register("categorias")} />
+                        <Form.Check type="checkbox" label="Romance" name={"categorias"} value={"Romance"} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>ISBN</Form.Label>
