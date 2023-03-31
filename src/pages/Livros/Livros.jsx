@@ -60,24 +60,7 @@ export function Livros() {
                                     <tr key={livro.id}>
                                         <td>{livro.titulo}</td>
                                         <td>{livro.autor}</td>
-
-
-                                        <td>
-                                            {livro.biografias ? "Biografias" : ""}
-                                            {livro.computacao ? "Computação" : ""}
-                                            {livro.entretenimento ? "Entretenimento" : ""}
-                                            {livro.educacao ? "Educação" : ""}
-                                            {livro.fantasia ? "Fantasia" : ""}
-                                            {livro.horror ? "Horror" : ""}
-                                            {livro.ficcaoCientifica ? "Ficção Científica" : ""}
-                                            {livro.gastronomia ? "Gastronomia" : ""}
-                                            {livro.suspense ? "Suspense" : ""}
-                                            {livro.religiao ? "Religião" : ""}
-                                            {livro.romance ? "Romance" : ""}
-                                        </td>
-
-
-
+                                        <td>{livro.categorias}</td>
                                         <td>{livro.isbn}</td>
                                         <td>
                                             <img src={livro.urlCapa} alt={livro.titulo} />

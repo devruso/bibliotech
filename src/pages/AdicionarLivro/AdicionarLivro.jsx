@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
@@ -7,19 +6,8 @@ import { addLivro, uploadCapaLivro } from "../../firebase/livros";
 
 export function AdicionarLivro() {
 
-    const [categorias, setCategorias] = useState([]);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
-
-    const handleCheckBox = (event) => {
-        let categoriasArray = [...categorias];
-        if (event.target.checked) {
-            categoriasArray = [...categorias, event.target.value];
-        } else {
-            categoriasArray.splice(categorias.indexOf(event.target.value), 1);
-        }
-        setCategorias(categoriasArray)
-    }
 
     function onSubmit(data) {
         const imagem = data.imagem[0];
@@ -65,38 +53,26 @@ export function AdicionarLivro() {
                         </Form.Text>
                     </Form.Group>
                     <Form.Label>Categorias</Form.Label>
-                    <Form.Group className="mb-3" controlId="biografias">
-                        <Form.Check type="checkbox" label="Biografias" id={"categorias"} name={"categorias"} value={"biografias"} onChange={handleCheckBox} />
-                    </Form.Group>
                     <Form.Group className="mb-3" controlId="computacao">
-                        <Form.Check type="checkbox" label="Computação" id={"categorias"} name={"categorias"} value={"computacao"} onChange={handleCheckBox} />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="entretenimento">
-                        <Form.Check type="checkbox" label="Entretenimento" id={"categorias"} name={"categorias"} value={"entretenimento"} onChange={handleCheckBox} />
+                        <Form.Check type="checkbox" label="Computação" name={"categorias"} value={"Computação "} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="educacao">
-                        <Form.Check type="checkbox" label="Educação" id={"categorias"} name={"categorias"} value={"educacao"} onChange={handleCheckBox} />
+                        <Form.Check type="checkbox" label="Educação" name={"categorias"} value={"Educação "} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="fantasia">
-                        <Form.Check type="checkbox" label="Fantasia" id={"categorias"} name={"categorias"} value={"fantasia"} onChange={handleCheckBox} />
+                        <Form.Check type="checkbox" label="Fantasia" name={"categorias"} value={"Fantasia "} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="horror">
-                        <Form.Check type="checkbox" label="Horror" id={"categorias"} name={"categorias"} value={"horror"} onChange={handleCheckBox} />
+                        <Form.Check type="checkbox" label="Horror" name={"categorias"} value={"Horror "} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="ficcaoCientifica">
-                        <Form.Check type="checkbox" label="Ficção Científica" id={"categorias"} name={"categorias"} value={"ficcaoCientifica"} onChange={handleCheckBox} />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="gastronomia">
-                        <Form.Check type="checkbox" label="Gastronomia" id={"categorias"} name={"categorias"} value={"gastronomia"} onChange={handleCheckBox} />
+                        <Form.Check type="checkbox" label="Ficção Científica" name={"categorias"} value={"Ficção Científica "} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="suspense">
-                        <Form.Check type="checkbox" label="Suspense" id={"categorias"} name={"categorias"} value={"suspense"} onChange={handleCheckBox} />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="religiao">
-                        <Form.Check type="checkbox" label="Religião" id={"categorias"} name={"categorias"} value={"religiao"} onChange={handleCheckBox} />
+                        <Form.Check type="checkbox" label="Suspense" name={"categorias"} value={"Suspense "} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="romance">
-                        <Form.Check type="checkbox" label="Romance" id={"categorias"} name={"categorias"} value={"romance"} onChange={handleCheckBox} />
+                        <Form.Check type="checkbox" label="Romance" name={"categorias"} value={"Romance "} {...register("categorias")} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>ISBN</Form.Label>
