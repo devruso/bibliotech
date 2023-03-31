@@ -22,9 +22,9 @@ export function Livros() {
 
     function onDeleteLivro(id, titulo) {
         const deletar = window.confirm(`Tem certeza que deseja excluir o livro ${titulo}?`);
-        if(deletar) {
+        if (deletar) {
             deleteLivro(id).then(() => {
-                toast.success(`${titulo} apagado com sucesso!`, {duration: 2000, position: "bottom-right"});
+                toast.success(`${titulo} apagado com sucesso!`, { duration: 2000, position: "bottom-right" });
                 initializeTable();
             })
         }
@@ -42,13 +42,13 @@ export function Livros() {
                 <hr />
                 {livros === null ?
                     <Loader />
-                    : 
+                    :
                     <Table striped bordered hover>
                         <thead>
                             <tr>
                                 <th>Título</th>
                                 <th>Autor</th>
-                                <th>Categoria</th>
+                                <th>Categorias</th>
                                 <th>ISBN</th>
                                 <th>Imagem</th>
                                 <th>Ações</th>
@@ -60,7 +60,24 @@ export function Livros() {
                                     <tr key={livro.id}>
                                         <td>{livro.titulo}</td>
                                         <td>{livro.autor}</td>
-                                        <td>{livro.categoria}</td>
+
+
+                                        <td>
+                                            {livro.biografias ? "Biografias" : ""}
+                                            {livro.computacao ? "Computação" : ""}
+                                            {livro.entretenimento ? "Entretenimento" : ""}
+                                            {livro.educacao ? "Educação" : ""}
+                                            {livro.fantasia ? "Fantasia" : ""}
+                                            {livro.horror ? "Horror" : ""}
+                                            {livro.ficcaoCientifica ? "Ficção Científica" : ""}
+                                            {livro.gastronomia ? "Gastronomia" : ""}
+                                            {livro.suspense ? "Suspense" : ""}
+                                            {livro.religiao ? "Religião" : ""}
+                                            {livro.romance ? "Romance" : ""}
+                                        </td>
+
+
+
                                         <td>{livro.isbn}</td>
                                         <td>
                                             <img src={livro.urlCapa} alt={livro.titulo} />
