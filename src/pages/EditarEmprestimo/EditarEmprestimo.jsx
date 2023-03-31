@@ -5,6 +5,8 @@ import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { getEmprestimo, updateEmprestimo } from "../../firebase/emprestimos";
 import { getLivro, getLivros } from "../../firebase/livros"
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export function EditarEmprestimo() {
 
@@ -15,6 +17,9 @@ export function EditarEmprestimo() {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const navigate = useNavigate();
+
+    const resultado = useContext(ThemeContext);
+    const temaEscuro = resultado.temaEscuro;
 
     function onSubmit(data) {
         getLivro(data.idLivro).then(livro => {
@@ -38,7 +43,7 @@ export function EditarEmprestimo() {
     }, [id, reset]);
 
     return (
-        <div className="editar-emprestimo">
+        <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} editar-emprestimo`}>
             <Container>
                 <h1>Editar empréstimo</h1>
                 <hr />
