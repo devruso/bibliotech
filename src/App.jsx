@@ -14,6 +14,7 @@ import { EditarLivro } from "./pages/EditarLivro/EditarLivro";
 import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmprestimo";
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
+import { Footer } from "./components/Footer/Footer";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -47,7 +48,9 @@ export function App() {
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
+                        
           </Routes>
+          <Footer/>
         </BrowserRouter>
       </AuthContext.Provider>
       <Toaster />
