@@ -45,6 +45,9 @@ export function Menu() {
             <Nav.Link as={Link} to="/emprestimos">
               Emprestimos
             </Nav.Link>
+            <Nav.Link as={Link} to="/privacidade">
+              Política de Privacidade
+            </Nav.Link>
             <Button variant="outline-light" onClick={alternar}>
               <img src={iconeBtn} width="16" alt="" />
               Alternar

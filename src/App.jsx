@@ -15,6 +15,7 @@ import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmpres
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { ThemeContext } from "./contexts/ThemeContext";
+import { PoliticaPrivacidade } from "./pages/PoliticaPrivacidade/PoliticaPrivacidade";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -57,6 +58,7 @@ export function App() {
                 <Route path="/emprestimos" element={<Emprestimos />} />
                 <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
                 <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
+                <Route path="/privacidade" element={<PoliticaPrivacidade />} />
               </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
