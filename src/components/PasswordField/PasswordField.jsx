@@ -6,8 +6,8 @@ export function PasswordField(props) {
 
     const [visible, setVisible] = useState(false);
 
-    const visibleIcon = <i class="bi bi-eye"></i>;
-    const invisibleIcon =<i class="bi bi-eye-slash"></i>
+    const visibleIcon = <i className="bi bi-eye"></i>;
+    const invisibleIcon =<i className="bi bi-eye-slash"></i>
 
 
   return (

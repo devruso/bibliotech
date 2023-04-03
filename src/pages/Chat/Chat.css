@@ -1,0 +1,7 @@
+.messageArea{
+    background-color: antiquewhite;
+    backdrop-filter: blur(10px);
+
+    width: 50%;
+    height: 500px;
+}
