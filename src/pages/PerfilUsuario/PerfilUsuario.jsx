@@ -2,7 +2,7 @@ import { Button, Container, Form, OverlayTrigger, Tooltip } from "react-bootstra
 import "./PerfilUsuario.css";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
-import { getAuth, EmailAuthProvider, reauthenticateWithCredential, deleteUser } from "firebase/auth";
+import { getAuth, deleteUser } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { updateUser } from "../../firebase/user";
 import { toast } from "react-hot-toast";
@@ -18,7 +18,6 @@ export function PerfilUsuario() {
 
     useEffect(() => {
         reset(user)
-        console.log(user)
     }, []);
 
 
@@ -26,20 +25,10 @@ export function PerfilUsuario() {
         updateUser(data).then(() => {
             toast.success("Informações editadas", { duration: 2000, position: "bottom-right" })
             navigate("/perfil/usuario")
-            console.log(user.displayName)
-            console.log(user.email)
-            console.log(user)
         })
-            .catch(() => {
-                const credential = EmailAuthProvider.credential(
-                    user.email,
-                    user.password
-                )
-                reauthenticateWithCredential(
-                    user,
-                    credential
-                )
-            })
+        .catch((error) => {
+            toast.error(`Aconteceu um erro. Código:${error.code}`)
+        })
     }
 
     function onDelete() {
@@ -48,15 +37,8 @@ export function PerfilUsuario() {
             deleteUser(user).then(() => {
 
             })
-            .catch(() => {
-                const credential = EmailAuthProvider.credential(
-                    user.email,
-                    user.password
-                )
-                reauthenticateWithCredential(
-                    user,
-                    credential
-                )
+            .catch((error) => {
+                toast.error(`Aconteceu um erro. Código:${error.code}`)
             })
         }
     }
