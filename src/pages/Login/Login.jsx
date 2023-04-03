@@ -67,8 +67,8 @@ export function Login() {
       </p>
       <h4>Bem-vindo(a) de volta!</h4>
       <p className="text-muted">
-        Não tem conta? <OverlayTrigger  placement="bottom" overlay={<Tooltip id="button-tooltip-2">Cadastre-se aqui</Tooltip>} >
-<Link to="/cadastro">Cadastre-se</Link></OverlayTrigger>
+        Não tem conta? <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Cadastre-se aqui</Tooltip>} >
+          <Link to="/cadastro">Cadastre-se</Link></OverlayTrigger>
       </p>
       <hr />
       <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
@@ -96,15 +96,16 @@ export function Login() {
             className={errors.senha ? "is-invalid" : ""}
             {...register("senha", { required: "Senha é obrigatória" })}
           /> */}
-          <PasswordField/>
+          <PasswordField />
           <Form.Text className="invalid-feedback">
             {errors.senha?.message}
           </Form.Text>
         </Form.Group>
-        <OverlayTrigger  placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para entrar</Tooltip>} >
-        <Button type="submit" variant="success">
-          Entrar
-        </Button>
+        <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para entrar</Tooltip>} >
+          <Button type="submit" variant="success">
+            Entrar
+          </Button>
+          <h5>Leia nossa <Link as={Link} to="/privacidade" target="_blank">Política de Privacidade</Link> antes de entrar.</h5>
         </OverlayTrigger>
       </Form>
     </Container>

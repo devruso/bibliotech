@@ -58,10 +58,10 @@ export function App() {
                 <Route path="/emprestimos" element={<Emprestimos />} />
                 <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
                 <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
-                <Route path="/privacidade" element={<PoliticaPrivacidade />} />
               </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
+              <Route path="/privacidade" element={<PoliticaPrivacidade />} />
             </Routes>
           </BrowserRouter>
         </AuthContext.Provider>
