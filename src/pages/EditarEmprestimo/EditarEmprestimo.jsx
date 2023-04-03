@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { getEmprestimo, updateEmprestimo } from "../../firebase/emprestimos";
 import { getLivro, getLivros } from "../../firebase/livros"
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export function EditarEmprestimo() {
 
-    const {id} = useParams();
+    const { id } = useParams();
 
     const [livros, setLivros] = useState([]);
 
@@ -16,10 +18,13 @@ export function EditarEmprestimo() {
 
     const navigate = useNavigate();
 
+    const resultado = useContext(ThemeContext);
+    const temaEscuro = resultado.temaEscuro;
+
     function onSubmit(data) {
         getLivro(data.idLivro).then(livro => {
             delete data.idLivro;
-            let editEmprestimo = {...data, livro};
+            let editEmprestimo = { ...data, livro };
             updateEmprestimo(id, editEmprestimo).then(() => {
                 toast.success("Empréstimo editado com sucesso!", { duration: 2000, position: "bottom-right" })
                 navigate("/emprestimos");
@@ -38,7 +43,7 @@ export function EditarEmprestimo() {
     }, [id, reset]);
 
     return (
-        <div className="editar-emprestimo">
+        <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} editar-emprestimo`}>
             <Container>
                 <h1>Editar empréstimo</h1>
                 <hr />
@@ -83,9 +88,11 @@ export function EditarEmprestimo() {
                             {errors.status?.message}
                         </Form.Text>
                     </Form.Group>
-                    <Button type="submit" variant="success">Editar</Button>
+                    <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para editar</Tooltip>} >
+                        <Button type="submit" variant="success">Editar</Button>
+                    </OverlayTrigger>
                 </Form>
             </Container>
-        </div>
+        </div >
     );
 }

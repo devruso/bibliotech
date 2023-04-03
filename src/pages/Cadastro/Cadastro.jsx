@@ -2,8 +2,9 @@ import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
+import facebookIcon from "../../assets/icons/facebook.png";
 import { useForm } from "react-hook-form";
-import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
+import { cadastrarEmailSenha, loginGoogle, loginFacebook } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -54,6 +55,26 @@ export function Cadastro() {
       });
   }
 
+  function onLoginFacebook() {
+    loginFacebook()
+    .then((user) => {
+      toast.success(`Bem-vindo(a) ${user.email}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+      navigate("/");
+    }) 
+    .catch((erro) => {
+      
+      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+    });
+    
+      }
+
+
   return (
     <Container fluid className="my-5">
       <p className="text-center">
@@ -64,10 +85,14 @@ export function Cadastro() {
         Já tem conta? <Link to="/login">Entre</Link>
       </p>
       <hr />
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
-        <img src={googleIcon} width="32" alt="Logo do google" />
-        Entrar com o Google
-      </Button>
+      <div class="d-flex">
+  <button class="btn btn-danger mx-3 mb-3" onClick={onLoginGoogle}>
+    <img src={googleIcon} width="32" alt="Ícone do Google" /> Entrar com o Google
+  </button>
+  <Button className="btn btn-primary mx-3 mb-3" onClick={onLoginFacebook}>
+    <img src={facebookIcon} width="32" alt="Ícone do Facebook" /> Entrar com o Facebook
+  </Button>
+</div>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>

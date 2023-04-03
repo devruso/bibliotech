@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
-import { Badge, Button, Container, Table } from "react-bootstrap";
+import { Badge, Button, Container, OverlayTrigger, Table, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getEmprestimos } from "../../firebase/emprestimos";
 import { Loader } from "../../components/Loader/Loader";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export function Emprestimos() {
 
     const [emprestimos, setEmprestimos] = useState(null);
+
+    const resultado = useContext(ThemeContext);
+    const temaEscuro = resultado.temaEscuro;
 
     useEffect(() => {
         getEmprestimos().then(busca => {
@@ -15,18 +20,20 @@ export function Emprestimos() {
     }, [])
 
     return (
-        <div className="emprestimos">
+        <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} emprestimos`}>
             <Container>
                 <div className="d-flex justify-content-between align-items-center">
                     <h1>Emprestimos</h1>
-                    <Button as={Link} to="/emprestimos/adicionar" variant="success">Adicionar emprestimo</Button>
+                    <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para adicionar</Tooltip>}>
+                        <Button as={Link} to="/emprestimos/adicionar" variant={temaEscuro ? "dark" : "success"}>Adicionar emprestimo</Button>
+                    </OverlayTrigger>
                 </div>
                 <hr />
                 {
                     emprestimos === null ?
                         <Loader />
                         :
-                        <Table striped bordered hover>
+                        <Table striped bordered hover className={temaEscuro ? "table table-dark" : ""}>
                             <thead>
                                 <tr>
                                     <th>Leitor</th>
@@ -52,14 +59,16 @@ export function Emprestimos() {
                                             </td>
                                             <td>{dataEmprestimo}</td>
                                             <td>
-                                                <Button
-                                                    as={Link}
-                                                    to={`/emprestimos/editar/${emprestimo.id}`}
-                                                    variant="warning"
-                                                    size="sm"
-                                                >
-                                                    <i className="bi bi-pencil-fill"></i>
-                                                </Button>
+                                                <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para editar</Tooltip>}>
+                                                    <Button
+                                                        as={Link}
+                                                        to={`/emprestimos/editar/${emprestimo.id}`}
+                                                        variant="warning"
+                                                        size="sm"
+                                                    >
+                                                        <i className="bi bi-pencil-fill"></i>
+                                                    </Button>
+                                                </OverlayTrigger>
                                             </td>
                                         </tr>
                                     )

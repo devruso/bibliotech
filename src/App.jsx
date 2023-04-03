@@ -14,6 +14,10 @@ import { EditarLivro } from "./pages/EditarLivro/EditarLivro";
 import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmprestimo";
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
+import { PerfilUsuario } from "./pages/PerfilUsuario/PerfilUsuario";
+import { ThemeContext } from "./contexts/ThemeContext";
+import { BemVindo } from "./pages/BemVindo/BemVindo";
+import { Quiz } from "./pages/Quiz/Quiz";
 import { Footer } from "./components/Footer/Footer";
 import NotFound from "./pages/NotFound/NotFound";
 import Reportar from "./pages/Reportar/Reportar";
@@ -22,6 +26,15 @@ import Reportar from "./pages/Reportar/Reportar";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
+  const [temaEscuro, setTemaEscuro] = useState(false);
+
+  function alternar() {
+    if (temaEscuro === true) {
+      setTemaEscuro(false);
+    } else {
+      setTemaEscuro(true);
+    }
+  }
 
   useEffect(() => {
     // Monitorar/detectar o usuário conectado
@@ -38,28 +51,32 @@ export function App() {
 
   return (
     <>
-      <AuthContext.Provider value={usuarioLogado}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Root />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/livros" element={<Livros />} />
-              <Route path="/livros/adicionar" element={<AdicionarLivro />} />
-              <Route path="/livros/editar/:id" element={<EditarLivro />} />
-              <Route path="/emprestimos" element={<Emprestimos />} />
-              <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
-              <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
-                
-            </Route>
-            <Route path="/login" element={<Login />}/>                    
-            <Route path="/cadastro" element={<Cadastro />}/>
-            <Route path="/footer" element={<Footer/>} />
-            <Route path="*" element={<NotFound/>} />
-            <Route path="/reportar" element={<Reportar />} />    
-          </Routes>
-          
-        </BrowserRouter>
-      </AuthContext.Provider>
+      <ThemeContext.Provider
+        value={{ temaEscuro: temaEscuro, alternar: alternar }}
+      >
+        <AuthContext.Provider value={usuarioLogado}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Root />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/livros" element={<Livros />} />
+                <Route path="/livros/adicionar" element={<AdicionarLivro />} />
+                <Route path="/livros/editar/:id" element={<EditarLivro />} />
+                <Route path="/emprestimos" element={<Emprestimos />} />
+                <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
+                <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
+                <Route path="/quiz" element={<BemVindo></BemVindo>}>  </Route>
+                <Route path="/quiz/perguntas" element={<Quiz></Quiz>}></Route>
+                <Route path="/perfil/usuario" element={<PerfilUsuario/>} />
+                <Route path="/footer" element={<Footer/>} />
+                <Route path="*" element={<NotFound/>} />
+              </Route>
+              <Route path="/login" element={<Login />} />
+              <Route path="/cadastro" element={<Cadastro />} />
+            </Routes>
+          </BrowserRouter>
+        </AuthContext.Provider>
+      </ThemeContext.Provider>
       <Toaster />
     </>
   );
