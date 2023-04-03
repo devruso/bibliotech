@@ -105,8 +105,9 @@ export function Login() {
           <Button type="submit" variant="success">
             Entrar
           </Button>
-          <h5>Leia nossa <Link as={Link} to="/privacidade" target="_blank">Política de Privacidade</Link> antes de entrar.</h5>
         </OverlayTrigger>
+        <hr />
+        <p>Leia nossa <Link to="/privacidade" target="_blank">Política de Privacidade</Link> antes de entrar.</p>
       </Form>
     </Container>
   );
