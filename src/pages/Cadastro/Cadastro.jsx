@@ -8,6 +8,7 @@ import { cadastrarEmailSenha, loginGoogle, loginFacebook } from "../../firebase/
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
+
 export function Cadastro() {
   const {
     register,
@@ -121,6 +122,7 @@ export function Cadastro() {
           Cadastrar
         </Button>
       </Form>
-    </Container>
+          </Container>
   );
+ 
 }

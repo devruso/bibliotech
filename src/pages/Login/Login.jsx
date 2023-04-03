@@ -11,6 +11,9 @@ import loginImg from "../../assets/images/login.png";
 import { PasswordField } from "../../components/PasswordField/PasswordField";
 import { AuthContext } from "../../contexts/AuthContext";
 import { loginGoogle, loginEmailSenha, loginFacebook, loginGithub } from "../../firebase/auth";
+import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
+import { Footer } from "../../components/Footer/Footer";
+
 
 export function Login() {
   const {
@@ -156,6 +159,13 @@ loginFacebook()
         </Button>
         </OverlayTrigger>
       </Form>
-    </Container>
+      <Footer/>
+      </Container>
+
+  
+    
+      
   );
+  
+  
 }

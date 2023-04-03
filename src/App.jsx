@@ -18,6 +18,10 @@ import { PerfilUsuario } from "./pages/PerfilUsuario/PerfilUsuario";
 import { ThemeContext } from "./contexts/ThemeContext";
 import { BemVindo } from "./pages/BemVindo/BemVindo";
 import { Quiz } from "./pages/Quiz/Quiz";
+import { Footer } from "./components/Footer/Footer";
+import NotFound from "./pages/NotFound/NotFound";
+import Reportar from "./pages/Reportar/Reportar";
+
 
 
 export function App() {
@@ -61,11 +65,11 @@ export function App() {
                 <Route path="/emprestimos" element={<Emprestimos />} />
                 <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
                 <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
-
                 <Route path="/quiz" element={<BemVindo></BemVindo>}>  </Route>
-              <Route path="/quiz/perguntas" element={<Quiz></Quiz>}></Route>
+                <Route path="/quiz/perguntas" element={<Quiz></Quiz>}></Route>
                 <Route path="/perfil/usuario" element={<PerfilUsuario/>} />
-   
+                <Route path="/footer" element={<Footer/>} />
+                <Route path="*" element={<NotFound/>} />
               </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
