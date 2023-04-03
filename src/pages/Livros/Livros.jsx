@@ -7,12 +7,16 @@ import { deleteLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { ModalLivro } from "../../components/ModalLivro/ModalLivro";
 
 export function Livros() {
 
     const [livros, setLivros] = useState(null);
     const [show, setShow] = useState(false);
     const [livroSelecionado, setLivroSelecionado] = useState(null);
+    const [modalShow, setModalShow] = useState(false);
+    const [livroDestacado, setlivroDestacado] = useState({ titulo: "", url: "" }); 
+
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -23,6 +27,12 @@ export function Livros() {
     useEffect(() => {
         initializeTable();
     }, []);
+
+    function handleShowModalLivro(titulo, url) { 
+        setModalShow(true); 
+        setlivroDestacado({ titulo, url });
+    }
+
 
     function initializeTable() {
         getLivros().then(resultados => {
@@ -55,88 +65,101 @@ export function Livros() {
                 {livros === null ?
                     <Loader />
                     :
-                    <Table striped bordered hover className={temaEscuro ? "table table-dark" : ""}>
-                        <thead>
-                            <tr>
-                                <th>Título</th>
-                                <th>Autor</th>
-                                <th>Categorias</th>
-                                <th>ISBN</th>
-                                <th>Imagem</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {livros.map((livro) => {
-                                return (
-                                    <tr key={livro.id}>
-                                        <td>{livro.titulo}</td>
-                                        <td>{livro.autor}</td>
-                                        <td style={{ maxWidth: "250px" }}>
-                                            {livro.categorias.map(categoria => {
-                                                return <Badge bg="success" className="me-1" key={categoria}>{categoria}</Badge>
-                                            })}
-                                        </td>
-                                        <td>{livro.isbn}</td>
-                                        <td>
-                                            <img src={livro.urlCapa} alt={livro.titulo} />
-                                        </td>
-                                        <td>
-                                            <div className="botoes">
-                                                <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para editar</Tooltip>}>
-                                                    <Button
-                                                        as={Link}
-                                                        to={`/livros/editar/${livro.id}`}
-                                                        variant="warning"
-                                                        size="sm"
-                                                        className="me-2"
-                                                    >
-                                                        <i className="bi bi-pencil-fill"></i>
-                                                    </Button>
-                                                </OverlayTrigger>
+                    <div>
+                        <Table striped bordered hover className={temaEscuro ? "table table-dark" : ""}>
+                            <thead>
+                                <tr>
+                                    <th>Título</th>
+                                    <th>Autor</th>
+                                    <th>Categorias</th>
+                                    <th>ISBN</th>
+                                    <th>Imagem</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {livros.map((livro) => {
+                                    return (
+                                        <tr key={livro.id}>
+                                            <td>{livro.titulo}</td>
+                                            <td>{livro.autor}</td>
+                                            <td style={{ maxWidth: "250px" }}>
+                                                {livro.categorias.map(categoria => {
+                                                    return <Badge bg="success" className="me-1" key={categoria}>{categoria}</Badge>
+                                                })}
+                                            </td>
+                                            <td>{livro.isbn}</td>
+                                            <td>
+                                                <img
+                                                    src={livro.urlCapa}
+                                                    alt={livro.titulo}
+                                                    onClick={() => handleShowModalLivro(livro.titulo, livro.urlCapa)} 
+                                                />
+                                            </td>
+                                            <td>
+                                                <div className="botoes">
+                                                    <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para editar</Tooltip>}>
+                                                        <Button
+                                                            as={Link}
+                                                            to={`/livros/editar/${livro.id}`}
+                                                            variant="warning"
+                                                            size="sm"
+                                                            className="me-2"
+                                                        >
+                                                            <i className="bi bi-pencil-fill"></i>
+                                                        </Button>
+                                                    </OverlayTrigger>
 
-                                                <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para excluir</Tooltip>}>
-                                                    <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
-                                                        <i className="bi bi-trash3-fill"></i>
-                                                    </Button>
-                                                </OverlayTrigger>
-                                                <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para saber as informações</Tooltip>}>
-                                                    <Button
-                                                        size="sm"
-                                                        variant="success"
-                                                        onClick={() => { setLivroSelecionado(livro); handleShow(); }}
-                                                        className="mx-2"
-                                                    >
-                                                        <i class="bi bi-info-circle-fill"></i>
-                                                    </Button>
-                                                </OverlayTrigger>
-                                            </div>
+                                                    <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para excluir</Tooltip>}>
+                                                        <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
+                                                            <i className="bi bi-trash3-fill"></i>
+                                                        </Button>
+                                                    </OverlayTrigger>
+                                                    <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para saber as informações</Tooltip>}>
+                                                        <Button
+                                                            size="sm"
+                                                            variant="success"
+                                                            onClick={() => { setLivroSelecionado(livro); handleShow(); }}
+                                                            className="mx-2"
+                                                        >
+                                                            <i class="bi bi-info-circle-fill"></i>
+                                                        </Button>
+                                                    </OverlayTrigger>
+                                                </div>
 
-                                            <Modal show={show} onHide={handleClose}>
-                                                <Modal.Header closeButton>
-                                                    <Modal.Title>{livroSelecionado?.titulo}</Modal.Title>
-                                                </Modal.Header>
-                                                <Modal.Body>
-                                                    <ul>
-                                                        <li><b>Livro</b>: {livroSelecionado?.titulo}</li>
-                                                        <li><b>Categoria: </b> {livroSelecionado?.categoria}</li>
-                                                        <li><b>Autor: </b> {livroSelecionado?.autor}</li>
-                                                    </ul>
-                                                </Modal.Body>
-                                                <Modal.Footer>
-                                                    <Button variant="secondary" onClick={handleClose}>
-                                                        Close
-                                                    </Button>
+                                                <Modal show={show} onHide={handleClose}>
+                                                    <Modal.Header closeButton>
+                                                        <Modal.Title>{livroSelecionado?.titulo}</Modal.Title>
+                                                    </Modal.Header>
+                                                    <Modal.Body>
+                                                        <ul>
+                                                            <li><b>Livro</b>: {livroSelecionado?.titulo}</li>
+                                                            <li><b>Categoria: </b> {livroSelecionado?.categoria}</li>
+                                                            <li><b>Autor: </b> {livroSelecionado?.autor}</li>
+                                                        </ul>
+                                                    </Modal.Body>
+                                                    <Modal.Footer>
+                                                        <Button variant="secondary" onClick={handleClose}>
+                                                            Close
+                                                        </Button>
 
-                                                </Modal.Footer>
-                                            </Modal>
-                                        </td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                    </Table>
+                                                    </Modal.Footer>
+                                                </Modal>
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </Table>
+                        <ModalLivro 
+                            show={modalShow}
+                            onHide={() => setModalShow(false)} 
+                            titulo={livroDestacado.titulo}
+                            url={livroDestacado.url}
+                        />
+                    </div>
                 }
+
             </Container>
         </div>
     )
