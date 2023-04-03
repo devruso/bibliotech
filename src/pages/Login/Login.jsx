@@ -5,11 +5,12 @@ import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
 import facebookIcon from "../../assets/icons/facebook.png";
+import githubIcon from "../../assets/icons/github.svg";
 
 import loginImg from "../../assets/images/login.png";
 import { PasswordField } from "../../components/PasswordField/PasswordField";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha, loginFacebook } from "../../firebase/auth";
+import { loginGoogle, loginEmailSenha, loginFacebook, loginGithub } from "../../firebase/auth";
 
 export function Login() {
   const {
@@ -74,6 +75,25 @@ loginFacebook()
 
   }
 
+  function onLoginGithub() {
+    loginGithub()
+    .then((user) => {
+      toast.success(`Bem-vindo(a) ${user.email}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+      navigate("/");
+    }) 
+    .catch((erro) => {
+      
+      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+    });
+    
+      }
+
   const usuarioLogado = useContext(AuthContext);
 
   // Se tiver dados no objeto, está logado
@@ -98,6 +118,9 @@ loginFacebook()
   </button>
   <Button className="btn btn-primary mx-3 mb-3" onClick={onLoginFacebook}>
     <img src={facebookIcon} width="32" alt="Ícone do Facebook" /> Entrar com o Facebook
+  </Button>
+  <Button className="btn btn-dark mx-3 mb-3" onClick={onLoginGithub}>
+    <img src={githubIcon} width="32" alt="Ícone do Github" /> Entrar com o Github
   </Button>
 </div>
 
