@@ -16,6 +16,8 @@ import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { PerfilUsuario } from "./pages/PerfilUsuario/PerfilUsuario";
 import { ThemeContext } from "./contexts/ThemeContext";
+import { BemVindo } from "./pages/BemVindo/BemVindo";
+import { Quiz } from "./pages/Quiz/Quiz";
 
 
 export function App() {
@@ -59,6 +61,9 @@ export function App() {
                 <Route path="/emprestimos" element={<Emprestimos />} />
                 <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
                 <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
+
+                <Route path="/quiz" element={<BemVindo></BemVindo>}>  </Route>
+              <Route path="/quiz/perguntas" element={<Quiz></Quiz>}></Route>
                 <Route path="/perfil/usuario" element={<PerfilUsuario/>} />
    
               </Route>

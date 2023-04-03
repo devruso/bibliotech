@@ -48,6 +48,11 @@ export function Menu() {
             <Nav.Link as={Link}  to="/perfil/usuario">
               Perfil do usuário
             </Nav.Link>
+
+            <Nav.Link as={Link} to="/quiz">
+              Quiz
+            </Nav.Link>
+            
             <Button variant="outline-light" onClick={alternar}>
               <img src={iconeBtn} width="16" alt="" />
               Alternar
