@@ -15,6 +15,10 @@ import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmpres
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { Footer } from "./components/Footer/Footer";
+import NotFound from "./pages/NotFound/NotFound";
+import Reportar from "./pages/Reportar/Reportar";
+
+
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -45,12 +49,15 @@ export function App() {
               <Route path="/emprestimos" element={<Emprestimos />} />
               <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
+                
             </Route>
-            <Route path="/login" element={<Login />} />
-            <Route path="/cadastro" element={<Cadastro />} />
-                        
+            <Route path="/login" element={<Login />}/>                    
+            <Route path="/cadastro" element={<Cadastro />}/>
+            <Route path="/footer" element={<Footer/>} />
+            <Route path="*" element={<NotFound/>} />
+            <Route path="/reportar" element={<Reportar />} />    
           </Routes>
-          <Footer/>
+          
         </BrowserRouter>
       </AuthContext.Provider>
       <Toaster />

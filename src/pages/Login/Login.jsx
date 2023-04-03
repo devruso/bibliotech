@@ -7,6 +7,8 @@ import googleIcon from "../../assets/icons/google-white.svg";
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
 import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
+import { Footer } from "../../components/Footer/Footer";
+
 
 export function Login() {
   const {
@@ -102,6 +104,13 @@ export function Login() {
           Entrar
         </Button>
       </Form>
-    </Container>
+      <Footer/>
+      </Container>
+
+  
+    
+      
   );
+  
+  
 }
