@@ -6,8 +6,7 @@ import { getAuth, deleteUser } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { updateUser } from "../../firebase/user";
 import { toast } from "react-hot-toast";
-
-
+import { UploadFoto } from "../UploadFoto/UploadFoto";
 
 
 export function PerfilUsuario() {
@@ -19,7 +18,6 @@ export function PerfilUsuario() {
     useEffect(() => {
         reset(user)
     }, []);
-
 
     function onSubmit(data) {
         updateUser(data).then(() => {
@@ -35,7 +33,8 @@ export function PerfilUsuario() {
         const deletar = window.confirm(`Tem certeza que deseja excluir o usuário ${user.displayName}?`);
         if (deletar){
             deleteUser(user).then(() => {
-
+                toast.success("Usuário deletado", { duration: 2000, position: "bottom-right" })
+                navigate("/perfil/usuario")
             })
             .catch((error) => {
                 toast.error(`Aconteceu um erro. Código:${error.code}`)
@@ -47,8 +46,8 @@ export function PerfilUsuario() {
         <div className="center">
             <h1>Perfil de {user.displayName}</h1>
             <div className="area-usuario">
-                <div className="foto-upload">
-                    <img src="#" alt="upload+foto" />
+                <div>
+                    <UploadFoto className="form-larg tamanho-upload-foto"/>
                 </div>
                 <div className="linha-vertical"></div>
                 <div className="form-larg">
