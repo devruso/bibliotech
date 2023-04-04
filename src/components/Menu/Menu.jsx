@@ -39,6 +39,9 @@ export function Menu() {
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
+            <Nav.Link as={Link} to="/chat">
+              Chat
+            </Nav.Link>
             <Nav.Link as={Link} to="/livros">
               Livros
             </Nav.Link>
