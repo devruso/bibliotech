@@ -73,7 +73,7 @@ export function Ajuda() {
                     <Card.Body>
                         <Card.Title>Quiz</Card.Title>
                         <Card.Text className="card-texto">
-                            Aqui você pode fazer o nosso Quiz.
+                            Aqui você pode fazer o nosso Quiz dinamico.
                         </Card.Text>
                         <Button variant="success" as={Link} to="/quiz">Clique aqui!</Button>
                     </Card.Body>
