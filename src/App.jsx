@@ -21,6 +21,7 @@ import { Quiz } from "./pages/Quiz/Quiz";
 import { Footer } from "./components/Footer/Footer";
 import NotFound from "./pages/NotFound/NotFound";
 import Reportar from "./pages/Reportar/Reportar";
+import { PoliticaPrivacidade } from "./pages/PoliticaPrivacidade/PoliticaPrivacidade";
 
 
 
@@ -67,12 +68,13 @@ export function App() {
                 <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
                 <Route path="/quiz" element={<BemVindo></BemVindo>}>  </Route>
                 <Route path="/quiz/perguntas" element={<Quiz></Quiz>}></Route>
-                <Route path="/perfil/usuario" element={<PerfilUsuario/>} />
-                <Route path="/footer" element={<Footer/>} />
-                <Route path="*" element={<NotFound/>} />
+                <Route path="/perfil/usuario" element={<PerfilUsuario />} />
+                <Route path="/footer" element={<Footer />} />
+                <Route path="*" element={<NotFound />} />
               </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
+              <Route path="/privacidade" element={<PoliticaPrivacidade />} />
             </Routes>
           </BrowserRouter>
         </AuthContext.Provider>
