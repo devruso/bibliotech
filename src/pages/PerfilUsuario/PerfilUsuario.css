@@ -1,32 +1,22 @@
-.center{
+.center {
     text-align: center;
     margin-top: 35px;
 }
 
-.center h1{
+.center h1 {
     margin-bottom: 25px;
 }
 
-.foto-upload{
-    width: 250px;
-    height: 250px;
-    border: 2px solid #198754;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.area-usuario{
+.area-usuario {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
 }
 
-.linha-vertical{
+.linha-vertical {
     border-left: 0.5px solid rgb(235, 235, 235);
-    height: 350px;
+    height: 380px;
     margin: 0 50px;
 }
 
@@ -35,7 +25,31 @@
     text-align: start
 }
 
-.botoes{
-    display: flex;
-    justify-content: space-around;
+
+@media (max-width: 600px) {
+    .center {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .area-usuario {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        text-align: start;
+    }
+
+    .linha-vertical {
+        border-top: 0.5px solid rgb(235, 235, 235);
+        height: 0;
+        width: 400px;
+        margin-top: 25px;
+    }
+
+    .form-larg {
+        width: 380px;
+    }
 }
