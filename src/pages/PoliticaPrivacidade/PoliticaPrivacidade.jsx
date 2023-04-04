@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./PoliticaPrivacidade.css"
-import { Accordion, ListGroup } from "react-bootstrap";
+import { Accordion, Button, ListGroup } from "react-bootstrap";
 
 export function PoliticaPrivacidade() {
     return (
@@ -106,6 +106,7 @@ export function PoliticaPrivacidade() {
                     </ListGroup.Item>
                 </Accordion >
             </ListGroup>
+            <Button className="m-2" variant="success" as={Link} to="/">Voltar</Button>
         </div >
     );
 }
