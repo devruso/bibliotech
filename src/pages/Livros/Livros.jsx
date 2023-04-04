@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Container, OverlayTrigger, Table, Tooltip, Badge, Modal } from "react-bootstrap";
+import { Button, Container, OverlayTrigger, Table, Tooltip, Badge, Modal, FormControl } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
@@ -15,27 +15,31 @@ export function Livros() {
     const [show, setShow] = useState(false);
     const [livroSelecionado, setLivroSelecionado] = useState(null);
     const [modalShow, setModalShow] = useState(false);
-    const [livroDestacado, setlivroDestacado] = useState({ titulo: "", url: "" }); 
-
-
+    const [livroDestacado, setlivroDestacado] = useState({ titulo: "", url: "" });
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
     const resultado = useContext(ThemeContext);
     const temaEscuro = resultado.temaEscuro;
+    const [search, setSearch] = useState("")
+    const [livrosFilter, setLivrosFilter] = useState([])
+    const livrosFiltrados = livrosFilter.filter(livro => livro.titulo.toLowerCase().includes(search.toLowerCase()) || livro.isbn.toLowerCase().includes(search.toLowerCase())   );
+
+
 
     useEffect(() => {
         initializeTable();
+
     }, []);
 
-    function handleShowModalLivro(titulo, url) { 
-        setModalShow(true); 
+    function handleShowModalLivro(titulo, url) {
+        setModalShow(true);
         setlivroDestacado({ titulo, url });
     }
 
 
     function initializeTable() {
         getLivros().then(resultados => {
+            setLivrosFilter(resultados)
             setLivros(resultados)
         })
     }
@@ -66,6 +70,17 @@ export function Livros() {
                     <Loader />
                     :
                     <div>
+
+                        <FormControl type="text"
+                            placeholder="Pesquisar livro"
+                            className="w-25"
+                            value={search}
+                            onChange={(evento) => setSearch(evento.target.value)}
+
+                        />
+
+                        <br></br>
+
                         <Table striped bordered hover className={temaEscuro ? "table table-dark" : ""}>
                             <thead>
                                 <tr>
@@ -78,7 +93,7 @@ export function Livros() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {livros.map((livro) => {
+                                {livrosFiltrados.map((livro) => {
                                     return (
                                         <tr key={livro.id}>
                                             <td>{livro.titulo}</td>
@@ -93,7 +108,7 @@ export function Livros() {
                                                 <img
                                                     src={livro.urlCapa}
                                                     alt={livro.titulo}
-                                                    onClick={() => handleShowModalLivro(livro.titulo, livro.urlCapa)} 
+                                                    onClick={() => handleShowModalLivro(livro.titulo, livro.urlCapa)}
                                                 />
                                             </td>
                                             <td>
@@ -151,9 +166,9 @@ export function Livros() {
                                 })}
                             </tbody>
                         </Table>
-                        <ModalLivro 
+                        <ModalLivro
                             show={modalShow}
-                            onHide={() => setModalShow(false)} 
+                            onHide={() => setModalShow(false)}
                             titulo={livroDestacado.titulo}
                             url={livroDestacado.url}
                         />
