@@ -96,7 +96,7 @@ export function Login() {
             className={errors.senha ? "is-invalid" : ""}
             {...register("senha", { required: "Senha é obrigatória" })}
           /> */}
-          <PasswordField/>
+          <PasswordField />
           <Form.Text className="invalid-feedback">
             {errors.senha?.message}
           </Form.Text>

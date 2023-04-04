@@ -15,9 +15,7 @@ export function PasswordField(props) {
       <Form.Control className="password-field" type={visible ? "text" : "password"} {...props} />
         <Button onClick={()=>setVisible(!visible)} className="eye-btn" variant="light">
             {visible ? visibleIcon : invisibleIcon}
-
         </Button>
-      
     </div>
   );
 }

@@ -1,7 +1,68 @@
 .messageArea{
-    background-color: antiquewhite;
-    backdrop-filter: blur(10px);
-
-    width: 50%;
+    background:rgba(100,200,77, 0.2);
+    border-radius: 1px;
+    display: flex;
+    flex-direction: column;
+    margin: 30px auto 0;
     height: 500px;
+    overflow-y:scroll;
+}
+.chatName{
+    background-color: aqua;
+    margin-bottom: 0;
+}
+.userMessage{
+    display: flex;
+    flex-direction: column;
+    align-self: end;
+    margin: 5px 0px ;
+    border-radius: 3px;
+    width: 40%;
+    background-color: rgb(206, 222, 214); 
+}
+.userMessage small{
+    align-self: flex-end;
+    font-size:x-small ;
+    margin-right: 10px;
+    margin-bottom: 2px;
+}
+.userMessage p{
+    font-weight: 300;
+    font-size: small;
+    
+}
+.userMessage label{
+    margin-left: 5px;
+    font-weight: 500;
+    font-size: small;
+}
+
+.otherUserMessage{
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    margin: 5px 0px 5px 5px;
+    border-radius: 3px;
+    width: 40%;
+    margin-left: 25px;
+    background-color: rgb(142, 168, 155);
+}
+.otherUserMessage small{
+    align-self: flex-end;
+    font-size:x-small ;
+    margin-right: 10px;
+    margin-bottom: 2px;
+}
+.otherUserMessage p{
+    font-weight: 300;
+    font-size: small;
+    
+}
+.otherUserMessage label{
+    margin-left: 5px;
+    font-weight: 500;
+    font-size: small;
+}
+::-webkit-scrollbar{
+    width: 2em;
 }
