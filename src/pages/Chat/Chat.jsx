@@ -34,6 +34,7 @@ export function Chat() {
       setTodasMensagens(messages);
     });
   }, []);
+  
   useEffect(() =>{
       scrollToBottom();
   }, [todasMensagens])
