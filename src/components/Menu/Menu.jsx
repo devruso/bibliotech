@@ -26,7 +26,7 @@ export function Menu() {
   }
 
   return (
-    <Navbar   className="navbar"     bg={temaEscuro ? "dark" : "success"}
+    <Navbar bg={temaEscuro ? "dark" : "success"}
       variant={temaEscuro ? "dark" : "light"} expand="lg">
       <Container fluid>
         <Navbar.Brand>
