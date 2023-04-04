@@ -99,7 +99,7 @@ export function PoliticaPrivacidade() {
                             <Accordion.Header><h3>Mudanças nesta Política de Privacidade e Cookies</h3></Accordion.Header>
                             <Accordion.Body>
                                 <p>
-                                    Reservamo-nos o direito de modificar esta declaração. As mudanças serão publicadas e publicitadas no nosso website.
+                                    Reservamo-nos o direito de modificar esta declaração no futuro. As mudanças serão publicadas e publicitadas no nosso website.
                                 </p>
                             </Accordion.Body>
                         </Accordion.Item>
