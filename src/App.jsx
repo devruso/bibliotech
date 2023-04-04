@@ -22,6 +22,7 @@ import { Footer } from "./components/Footer/Footer";
 import NotFound from "./pages/NotFound/NotFound";
 import Reportar from "./pages/Reportar/Reportar";
 import { PoliticaPrivacidade } from "./pages/PoliticaPrivacidade/PoliticaPrivacidade";
+import { Ajuda } from "./pages/Ajuda/Ajuda";
 
 
 
@@ -71,6 +72,7 @@ export function App() {
                 <Route path="/perfil/usuario" element={<PerfilUsuario />} />
                 <Route path="/footer" element={<Footer />} />
                 <Route path="*" element={<NotFound />} />
+                <Route path="/ajuda" element={<Ajuda />} />
               </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
