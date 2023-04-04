@@ -1,0 +1,55 @@
+.center {
+    text-align: center;
+    margin-top: 35px;
+}
+
+.center h1 {
+    margin-bottom: 25px;
+}
+
+.area-usuario {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.linha-vertical {
+    border-left: 0.5px solid rgb(235, 235, 235);
+    height: 380px;
+    margin: 0 50px;
+}
+
+.form-larg{
+    width: 500px;
+    text-align: start
+}
+
+
+@media (max-width: 600px) {
+    .center {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .area-usuario {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        text-align: start;
+    }
+
+    .linha-vertical {
+        border-top: 0.5px solid rgb(235, 235, 235);
+        height: 0;
+        width: 400px;
+        margin-top: 25px;
+    }
+
+    .form-larg {
+        width: 380px;
+    }
+}
