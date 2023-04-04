@@ -37,7 +37,7 @@ export function Quiz() {
 <Container className="d-flex justify-content-center align-items-center vh-100">
         <div className="score-section p-5 text-center">
           <h3 className="mb-4">Sua pontuação:</h3>
-          <h1 className="display-1">{pontos}</h1>
+          <h1 className="display-1">{pontos}/100</h1>
           <p className="mt-4">
             Você acertou {score} de {perguntasLiteratura.length} questões
           </p>
