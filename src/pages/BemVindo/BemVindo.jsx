@@ -14,7 +14,7 @@ export function BemVindo() {
       <div className="quiz my-5 text-center">
         <h2>Seja bem vindo(a) ao nosso quiz!</h2>
         <p><img src={Quiz1} alt="inicio-quiz" /></p>
-        <p>Clique no botão abaixo para iniciar:</p>
+        <p>Cada questão vale 25 pontos, o máximo é 100 pontos. Clique no botão abaixo para iniciar:</p>
         <Button className="btn btn-success" onClick={entrarQuiz}>Iniciar</Button>
       </div>
     </Container>

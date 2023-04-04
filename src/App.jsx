@@ -22,8 +22,8 @@ import { Footer } from "./components/Footer/Footer";
 import NotFound from "./pages/NotFound/NotFound";
 import Reportar from "./pages/Reportar/Reportar";
 import { PoliticaPrivacidade } from "./pages/PoliticaPrivacidade/PoliticaPrivacidade";
-
-
+import { Ajuda } from "./pages/Ajuda/Ajuda";
+import { Chat } from "./pages/Chat/Chat";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -60,6 +60,7 @@ export function App() {
             <Routes>
               <Route path="/" element={<Root />}>
                 <Route path="/" element={<Home />} />
+                <Route path="/chat" element={<Chat />} />
                 <Route path="/livros" element={<Livros />} />
                 <Route path="/livros/adicionar" element={<AdicionarLivro />} />
                 <Route path="/livros/editar/:id" element={<EditarLivro />} />
@@ -71,6 +72,7 @@ export function App() {
                 <Route path="/perfil/usuario" element={<PerfilUsuario />} />
                 <Route path="/footer" element={<Footer />} />
                 <Route path="*" element={<NotFound />} />
+                <Route path="/ajuda" element={<Ajuda />} />
               </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
