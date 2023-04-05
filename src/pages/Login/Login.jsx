@@ -151,6 +151,7 @@ loginFacebook()
           <Form.Text className="invalid-feedback">
             {errors.senha?.message}
           </Form.Text>
+          <Form.Label className="mt-1 text-muted">Esqueceu sua senha? <a href="/recuperacao-senha">Clique aqui</a></Form.Label>
         </Form.Group>
         <OverlayTrigger  placement="bottom" overlay={<Tooltip id="button-tooltip-2">Clique para entrar</Tooltip>} >
         <Button type="submit" variant="success">

@@ -20,6 +20,11 @@ import { BemVindo } from "./pages/BemVindo/BemVindo";
 import { Quiz } from "./pages/Quiz/Quiz";
 import { Footer } from "./components/Footer/Footer";
 import NotFound from "./pages/NotFound/NotFound";
+import Reportar from "./pages/Reportar/Reportar";
+import { PoliticaPrivacidade } from "./pages/PoliticaPrivacidade/PoliticaPrivacidade";
+import { Ajuda } from "./pages/Ajuda/Ajuda";
+import { Chat } from "./pages/Chat/Chat";
+import { RecuperacaoSenha } from "./pages/RecuperacaoSenha/RecuperacaoSenha";
 import {EmailVerification} from "./pages/EmailVerification/EmailVerification"
 import { Loader } from "./components/Loader/Loader";
 
@@ -71,6 +76,7 @@ export function App() {
                 <Route path="/footer" element={<Footer/>} />
                 </Route>
               <Route path="/login" element={<Login />} />
+              <Route path="/recuperacao-senha" element={<RecuperacaoSenha />}/>
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/confirmaremail" element={<EmailVerification/>} />
               <Route path="*" element={<NotFound/>} />
