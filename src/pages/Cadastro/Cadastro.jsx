@@ -1,5 +1,5 @@
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link,Navigate  } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
 import facebookIcon from "../../assets/icons/facebook.png";
@@ -7,6 +7,9 @@ import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginGoogle, loginFacebook } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import {firebaseError}  from "../../firebase/firebaseError";
 
 
 export function Cadastro() {
@@ -16,6 +19,19 @@ export function Cadastro() {
     formState: { errors },
   } = useForm();
 
+  const [inputType, setInputType] = useState("password");
+  const [iconType, setIconType] = useState("bi bi-eye-slash");
+  function showPassword() {
+    if (inputType === "password") {
+      setInputType("text");
+      setIconType("bi bi-eye");
+    } else {
+      setInputType("password");
+      setIconType("bi bi-eye-slash");
+
+    }
+  }
+
   const navigate = useNavigate();
 
   function onSubmit(data) {
@@ -24,14 +40,14 @@ export function Cadastro() {
       .then((user) => {
         toast.success(`Bem-vindo(a) ${user.email}`, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 3000,
         });
-        navigate("/");
+        navigate("/confirmaremail");
       })
       .catch((erro) => {
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        toast.error(`Error. Código: ${erro.code}`, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 3000,
         });
       });
   }
@@ -74,6 +90,12 @@ export function Cadastro() {
     
       }
 
+      const usuarioLogado = useContext(AuthContext);
+
+      
+      if (usuarioLogado !== null) {
+        return <Navigate to="/" />;
+      }
 
   return (
     <Container fluid className="my-5">

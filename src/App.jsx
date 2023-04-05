@@ -25,9 +25,13 @@ import { PoliticaPrivacidade } from "./pages/PoliticaPrivacidade/PoliticaPrivaci
 import { Ajuda } from "./pages/Ajuda/Ajuda";
 import { Chat } from "./pages/Chat/Chat";
 import { RecuperacaoSenha } from "./pages/RecuperacaoSenha/RecuperacaoSenha";
+import {EmailVerification} from "./pages/EmailVerification/EmailVerification"
+import { Loader } from "./components/Loader/Loader";
+
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [temaEscuro, setTemaEscuro] = useState(false);
 
   function alternar() {
@@ -37,19 +41,18 @@ export function App() {
       setTemaEscuro(true);
     }
   }
-
   useEffect(() => {
-    // Monitorar/detectar o usuário conectado
-    // Fica sabendo quando loga/desloga
     onAuthStateChanged(auth, (user) => {
-      // user é nulo = deslogado
-      // user tem objeto = logado
       setUsuarioLogado(user);
+      setLoading(false);
     });
-
-    // Esse efeito irá rodar apenas uma vez
-    // Quando o App for renderizado/inicializado
   }, []);
+
+    if (loading) {
+    return <Loader />;
+  }
+
+
 
   return (
     <>
@@ -61,7 +64,6 @@ export function App() {
             <Routes>
               <Route path="/" element={<Root />}>
                 <Route path="/" element={<Home />} />
-                <Route path="/chat" element={<Chat />} />
                 <Route path="/livros" element={<Livros />} />
                 <Route path="/livros/adicionar" element={<AdicionarLivro />} />
                 <Route path="/livros/editar/:id" element={<EditarLivro />} />
@@ -70,15 +72,15 @@ export function App() {
                 <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
                 <Route path="/quiz" element={<BemVindo></BemVindo>}>  </Route>
                 <Route path="/quiz/perguntas" element={<Quiz></Quiz>}></Route>
-                <Route path="/perfil/usuario" element={<PerfilUsuario />} />
-                <Route path="/footer" element={<Footer />} />
-                <Route path="*" element={<NotFound />} />
-                <Route path="/ajuda" element={<Ajuda />} />
-              </Route>
+                <Route path="/perfil/usuario" element={<PerfilUsuario/>} />
+                <Route path="/footer" element={<Footer/>} />
+                </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/recuperacao-senha" element={<RecuperacaoSenha />}/>
               <Route path="/cadastro" element={<Cadastro />} />
-              <Route path="/privacidade" element={<PoliticaPrivacidade />} />
+              <Route path="/confirmaremail" element={<EmailVerification/>} />
+              <Route path="*" element={<NotFound/>} />
+              
             </Routes>
           </BrowserRouter>
         </AuthContext.Provider>
