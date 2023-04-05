@@ -1,6 +1,8 @@
 .postagem{
-    background: rgba(25, 135, 84, 0.8);
+    background: rgba(#fff 0.8);
     margin-top: 2%;
+    border: 1px solid rgb(25, 135, 84);
+    box-shadow: 1.5px 1px 25px 2px #198754;
     display: flex;
     justify-content: space-between;
     align-items: center;
