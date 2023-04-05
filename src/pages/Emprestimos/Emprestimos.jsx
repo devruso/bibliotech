@@ -153,7 +153,7 @@ export function Emprestimos() {
                         <Pagination.Prev />
                     </Button>
                     <Button variant="none">
-                        <Pagination.Item active style={{ background: "#198754" }}>
+                        <Pagination.Item active>
                             {indice}
                         </Pagination.Item>
                     </Button>
