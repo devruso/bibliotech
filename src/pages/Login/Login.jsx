@@ -181,9 +181,8 @@ export function Login() {
               <Form.Text className=" invalid-feedback">
                 {errors.senha?.message}
               </Form.Text>
-             
-              
             </InputGroup>
+            <Form.Label className="text-muted">Esqueceu sua senha? <a href="/recuperacao-senha">Clique aqui</a></Form.Label>
 
         </Form.Group>
         <OverlayTrigger

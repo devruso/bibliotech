@@ -36,7 +36,7 @@ export function Postagem(){
                         {errors.postTitle?.message}
                     </Form.Text>
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='mt-2'>
                     <Form.Label>Conteúdo</Form.Label>
                     <Form.Control className='inputDados' type='text' {...register("postContent", {required:"O conteúdo é necessario" , maxLength:{value: 128, message:"Limite de 128 caracteres"} })} />
                     <Form.Text>

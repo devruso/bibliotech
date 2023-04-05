@@ -38,9 +38,9 @@ export function Home() {
 
   return (
     
-    <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} home`}>
-      <h3 className="d-flex align-items-center mt-4">Visão geral</h3> <hr />
-      <CardGroup>
+    <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} home d-flex flex-column`}>
+      <h3 className="text-center pt-4">Visão geral</h3> <hr />
+      <CardGroup className="align-self-center">
         <Card className="text-center m-2 p-3 border bg-light " style={{ maxWidth: '18rem', maxHeight: 'auto' }}>
           <Card.Body className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"}>
             <Card.Title>Total de usuários</Card.Title>
