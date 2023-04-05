@@ -69,7 +69,7 @@ export function PerfilUsuario() {
                             </Form.Group>
                             <Form.Group className="mb-3">
                                 <Form.Label>Senha: </Form.Label>
-                                <Form.Control type="text" {...register("senha", { required: "A senha é obrigatória", maxLength: 30 })} />
+                                <Form.Control type="password" {...register("senha", { required: "A senha é obrigatória", maxLength: 30 })} />
                                 <Form.Text className="text-danger">
                                     {errors.senha?.message}
                                 </Form.Text>
