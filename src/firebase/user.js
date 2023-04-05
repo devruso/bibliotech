@@ -1,6 +1,8 @@
 import { getAuth, updateProfile, updateEmail, updatePassword } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "./config"
+import { getDocs } from "firebase/firestore";
+import { usersCollection } from "./collections";
 
 
 const auth = getAuth();
@@ -20,4 +22,13 @@ export async function addPhoto(imagem) {
 
 export async function addFoto(url) {
     await updateProfile(auth.currentUser, {photoURL: url})
+}
+
+export async function getUsers() {
+    const snapshot = await getDocs(usersCollection);
+    let users = [];
+    snapshot.forEach(doc => {
+        users.push({...doc.data(), id: doc.id});
+    })
+    return users;
 }

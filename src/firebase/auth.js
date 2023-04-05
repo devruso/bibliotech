@@ -9,6 +9,21 @@ import {
 
 } from "firebase/auth";
 import { auth } from "./config";
+import { usersCollection } from "./collections";
+import {doc, getDoc, setDoc} from "firebase/firestore"
+
+async function cadastrarUsuarioDb(data){
+  const userDoc = await getDoc(doc(usersCollection, data.user.uid))
+
+  if(!userDoc.exists()){
+    const newUserRef = doc(usersCollection, data.user.uid)
+    await setDoc(newUserRef, {
+      nome: data.user.displayName,
+      email: data.user.email,
+      dataCadastro: new Date()
+    });
+  }
+}
 
 // Função assíncrona = que o resultado não é obtido de imediato
 // Haverá "espera"
@@ -17,15 +32,17 @@ export async function cadastrarEmailSenha(email, senha) {
   // um novo usuário utilizando email/senha
 
   // Aguardando o resultado do Firebase
-  const resultado = await createUserWithEmailAndPassword(auth, email, senha);
+  const data = await createUserWithEmailAndPassword(auth, email, senha);
+  cadastrarUsuarioDb(data);
 
-  return resultado.user;
+  return data.user;
 }
 
 export async function loginGoogle() {
   // Configurar como o login do google vai funcionar
   const provider = new GoogleAuthProvider();
   const resultado = await signInWithPopup(auth, provider);
+  cadastrarUsuarioDb(resultado);
 
   return resultado.user;
 }
@@ -33,6 +50,7 @@ export async function loginGoogle() {
 export async function loginFacebook() {
   const provider = new FacebookAuthProvider();
   const autenticacao = await signInWithPopup(auth, provider);
+  cadastrarUsuarioDb(autenticacao);
 
   return autenticacao.user
 
@@ -42,6 +60,7 @@ export async function loginFacebook() {
 export async function loginGithub() {
   const provider = new GithubAuthProvider();
   const autenticacao = await signInWithPopup(auth, provider);
+  cadastrarUsuarioDb(autenticacao);
 
   return autenticacao.user
 
