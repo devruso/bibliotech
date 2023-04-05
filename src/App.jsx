@@ -20,7 +20,6 @@ import { BemVindo } from "./pages/BemVindo/BemVindo";
 import { Quiz } from "./pages/Quiz/Quiz";
 import { Footer } from "./components/Footer/Footer";
 import NotFound from "./pages/NotFound/NotFound";
-import Reportar from "./pages/Reportar/Reportar";
 import { PoliticaPrivacidade } from "./pages/PoliticaPrivacidade/PoliticaPrivacidade";
 import { Ajuda } from "./pages/Ajuda/Ajuda";
 import { Chat } from "./pages/Chat/Chat";
@@ -74,6 +73,7 @@ export function App() {
                 <Route path="/quiz/perguntas" element={<Quiz></Quiz>}></Route>
                 <Route path="/perfil/usuario" element={<PerfilUsuario/>} />
                 <Route path="/footer" element={<Footer/>} />
+                <Route path="/chat" element={<Chat/>}/>
                 </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/recuperacao-senha" element={<RecuperacaoSenha />}/>
