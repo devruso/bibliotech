@@ -40,6 +40,9 @@ export function Menu() {
             <Nav.Link className="d-flex align-items-center"  as={Link} to="/">
               Home
             </Nav.Link>
+            <Nav.Link className="d-flex align-items-center"  as={Link} to="/blog">
+           Postagens
+            </Nav.Link>
             <Nav.Link className="d-flex align-items-center"  as={Link} to="/livros">
             Livros
             </Nav.Link>
