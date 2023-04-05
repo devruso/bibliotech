@@ -64,5 +64,7 @@
     font-size: small;
 }
 ::-webkit-scrollbar{
-    width: 2em;
+    display: none;
 }
+
+

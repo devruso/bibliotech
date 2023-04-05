@@ -20,7 +20,6 @@ import { BemVindo } from "./pages/BemVindo/BemVindo";
 import { Quiz } from "./pages/Quiz/Quiz";
 import { Footer } from "./components/Footer/Footer";
 import NotFound from "./pages/NotFound/NotFound";
-import Reportar from "./pages/Reportar/Reportar";
 import { PoliticaPrivacidade } from "./pages/PoliticaPrivacidade/PoliticaPrivacidade";
 import { Ajuda } from "./pages/Ajuda/Ajuda";
 import { Chat } from "./pages/Chat/Chat";

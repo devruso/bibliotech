@@ -28,9 +28,9 @@ export function Footer() {
                         <div className="col-md-4 justify-content-end list-unstyled d-flex">
                             <h5 className="text-uppercase">Redes Sociais</h5>
                             <ul className="social_list">
-                                <li><a href="#"><i className="bi bi-instagram"></i> Instagram</a></li>
-                                <li><a href="#"><i className="bi bi-linkedin"></i> Linkedin</a></li>
-                                <li><a href="#"><i className="bi bi-facebook"></i> Facebook</a></li>
+                                <li><a href="#instagram"><i className="bi bi-instagram"></i> Instagram</a></li>
+                                <li><a href="#linkedin"><i className="bi bi-linkedin"></i> Linkedin</a></li>
+                                <li><a href="#facebook"><i className="bi bi-facebook"></i> Facebook</a></li>
                             </ul>
 
                         </div>
