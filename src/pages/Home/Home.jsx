@@ -1,3 +1,4 @@
+import { Postagem } from "../../components/Postagem/Postagem";
 import { useEffect, useState } from "react";
 import { Card, CardGroup } from "react-bootstrap";
 import { getLivros } from "../../firebase/livros";
@@ -36,6 +37,7 @@ export function Home() {
   }, []);
 
   return (
+    
     <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} home`}>
       <h3 className="d-flex align-items-center mt-4">Visão geral</h3> <hr />
       <CardGroup>
@@ -67,6 +69,8 @@ export function Home() {
           </Card.Body>
         </Card>
       </CardGroup>
+      <Postagem/>
+
     </div>
   );
 }
