@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { Badge, Button, Container, OverlayTrigger, Table, Tooltip } from "react-bootstrap";
+import { Badge, Button, Container, OverlayTrigger, Table, Tooltip, Pagination } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { collection, endBefore, startAfter, getDocs, limit, limitToLast, orderBy, query } from "firebase/firestore";
 import { getEmprestimos } from "../../firebase/emprestimos";
+import { db } from "../../firebase/config";
 import { Loader } from "../../components/Loader/Loader";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -9,16 +11,86 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 export function Emprestimos() {
 
     const [emprestimos, setEmprestimos] = useState(null);
-
     const resultado = useContext(ThemeContext);
     const temaEscuro = resultado.temaEscuro;
+    const [indice, setIndice] = useState(1);
+    const [last, setLast] = useState(null);
+    const [first, setFirst] = useState(null);
 
     useEffect(() => {
-        getEmprestimos().then(busca => {
-            setEmprestimos(busca);
-        })
-    }, [])
+        const buscaEmprestimos = async () => {
+          const emprestimos = await getEmprestimos();
+          setEmprestimos(emprestimos);
+          
+          const atual = query(
+            collection(db, "emprestimos"),
+            orderBy("dataEmprestimo", "desc"),
+            limit(5)
+          );
+          const snapshot = await getDocs(atual);
+          let paginaAtual = [];
+          const lastVisible = snapshot.docs[snapshot.docs.length - 1];
+          setLast(lastVisible);
+          const first = snapshot.docs[0];
+          setFirst(first);
+          snapshot.forEach((doc) => {
+            paginaAtual.push({ ...doc.data(), id: doc.id });
+          });
+          setEmprestimos(paginaAtual);
+        }
+      
+        buscaEmprestimos();
+      }, []);
+      
 
+      function avancarPagina() {
+        const nextPage = query(
+            collection(db, "emprestimos"),
+            orderBy("dataEmprestimo", "desc"),
+            startAfter(last),
+            limit(5)
+        );
+        getDocs(nextPage).then((snapshot) => {
+            if (!snapshot.empty) {
+                let calculo = indice + 1;
+                setIndice(calculo);
+                let paginaAtual = [];
+                const lastVisible = snapshot.docs[snapshot.docs.length - 1];
+                setLast(lastVisible);
+                const first = snapshot.docs[0];
+                setFirst(first);
+                snapshot.forEach((doc) => {
+                    paginaAtual.push({ ...doc.data(), id: doc.id });
+                });
+                setEmprestimos(paginaAtual);
+            }
+        });
+    }
+
+    function retrocederPagina() {
+        const prevPage = query(
+            collection(db, "emprestimos"),
+            orderBy("dataEmprestimo", "desc"),
+            endBefore(first),
+            limitToLast(5)
+        );
+        getDocs(prevPage).then((snapshot) => {
+            if (!snapshot.empty) {
+                let calculo = indice - 1;
+                setIndice(calculo);
+
+                let paginaAtual = [];
+                const lastVisible = snapshot.docs[snapshot.docs.length - 1];
+                setLast(lastVisible);
+                const first = snapshot.docs[0];
+                setFirst(first);
+                snapshot.forEach((doc) => {
+                    paginaAtual.push({ ...doc.data(), id: doc.id });
+                });
+                setEmprestimos(paginaAtual);
+            }
+        });
+    }
     return (
         <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} emprestimos`}>
             <Container>
@@ -76,7 +148,19 @@ export function Emprestimos() {
                             </tbody>
                         </Table>
                 }
-
+                <Pagination className="d-flex justify-content-center">
+                    <Button variant="none" onClick={retrocederPagina}>
+                        <Pagination.Prev />
+                    </Button>
+                    <Button variant="none">
+                        <Pagination.Item active style={{ background: "#198754" }}>
+                            {indice}
+                        </Pagination.Item>
+                    </Button>
+                    <Button variant="none" onClick={avancarPagina}>
+                        <Pagination.Next />
+                    </Button>
+                </Pagination>
             </Container>
         </div>
     )
