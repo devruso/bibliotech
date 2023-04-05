@@ -1,0 +1,40 @@
+.center-recup-senha{
+    border: 1px groove black;
+    box-shadow: 1.5px 2px 4px 4px #198754;
+    border-radius: 30px;
+    background: #fff;
+    width: 75%;;
+}
+
+.borda-left {
+    border-radius: 0px 3px 3px 0px !important;
+}
+
+.borda-right {
+    border-radius: 3px 0px 0px 3px !important;
+}
+
+@media (max-width: 600px) {
+    .responsividade-600{
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .recuperar-senha{
+        width: 300px !important;
+        background-color: black;
+    }
+
+    .center-recup-senha{
+        width: 350px;
+        height: 95vh;
+    }
+    .borda-left {
+        border-radius: 3px !important;
+        margin-top: 5px;
+    }
+    
+    .borda-right {
+        border-radius: 3px !important;
+    }
+}

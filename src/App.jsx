@@ -24,6 +24,7 @@ import Reportar from "./pages/Reportar/Reportar";
 import { PoliticaPrivacidade } from "./pages/PoliticaPrivacidade/PoliticaPrivacidade";
 import { Ajuda } from "./pages/Ajuda/Ajuda";
 import { Chat } from "./pages/Chat/Chat";
+import { RecuperacaoSenha } from "./pages/RecuperacaoSenha/RecuperacaoSenha";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -75,6 +76,7 @@ export function App() {
                 <Route path="/ajuda" element={<Ajuda />} />
               </Route>
               <Route path="/login" element={<Login />} />
+              <Route path="/recuperacao-senha" element={<RecuperacaoSenha />}/>
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/privacidade" element={<PoliticaPrivacidade />} />
             </Routes>
