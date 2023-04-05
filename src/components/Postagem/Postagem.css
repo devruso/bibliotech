@@ -10,7 +10,7 @@
     transform: scale(0.9);
     padding: 3%;
 }
-.postagem img{
+div .postagem-imagem{
     border-radius: 50%;
     width: 180px;
     height: 180px;
