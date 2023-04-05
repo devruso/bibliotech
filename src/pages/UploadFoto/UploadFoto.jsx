@@ -2,13 +2,13 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { addFoto, addPhoto, user } from "../../firebase/user";
+import { addFoto, addPhoto } from "../../firebase/user";
 import { getAuth } from "firebase/auth";
 import "./UploadFoto.css"
 
 
 export function UploadFoto() {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
     const auth = getAuth();
     const user = auth.currentUser;

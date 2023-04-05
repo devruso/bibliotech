@@ -1,4 +1,4 @@
-import { getAuth, updateProfile, updateEmail, updatePassword } from "firebase/auth";
+import { getAuth, updateProfile, updateEmail, updatePassword, sendPasswordResetEmail } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "./config"
 import { getDocs } from "firebase/firestore";
@@ -32,3 +32,7 @@ export async function getUsers() {
     })
     return users;
 }
+    
+export const resetSenha = (email) => {
+    return sendPasswordResetEmail(auth, email)
+};
