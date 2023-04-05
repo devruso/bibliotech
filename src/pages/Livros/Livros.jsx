@@ -72,7 +72,7 @@ export function Livros() {
                     <div>
 
                         <FormControl type="text"
-                            placeholder="Pesquisar livro"
+                            placeholder="Pesquisar livro pelo título ou ISBN"
                             className="w-25"
                             value={search}
                             onChange={(evento) => setSearch(evento.target.value)}
@@ -149,7 +149,7 @@ export function Livros() {
                                                     <Modal.Body>
                                                         <ul>
                                                             <li><b>Livro</b>: {livroSelecionado?.titulo}</li>
-                                                            <li><b>Categoria: </b> {livroSelecionado?.categoria}</li>
+                                                            <li><b>ISBN: </b> {livroSelecionado?.isbn}</li>
                                                             <li><b>Autor: </b> {livroSelecionado?.autor}</li>
                                                         </ul>
                                                     </Modal.Body>
