@@ -12,6 +12,9 @@
 }
 .postagem img{
     border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    border: 1.5px solid black;
 }
 .postagem label{
     font-weight: 600;
