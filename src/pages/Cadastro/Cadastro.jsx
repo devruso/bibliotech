@@ -88,7 +88,7 @@ export function Cadastro() {
 
   return (
     <div>
-      <Container fluid className="my-5 vh-100">
+      <Container fluid className="my-5 vh-100 m-5">
         <p className="text-center">
           <img src={logoIcon} width="256" alt="Logo do app" />
         </p>
