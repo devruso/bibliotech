@@ -68,12 +68,12 @@ export function App() {
                 <Route path="/quiz" element={<BemVindo></BemVindo>}>  </Route>
                 <Route path="/quiz/perguntas" element={<Quiz></Quiz>}></Route>
                 <Route path="/perfil/usuario" element={<PerfilUsuario/>} />
-                <Route path="/footer" element={<Footer/>} />
                 </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/confirmaremail" element={<EmailVerification/>} />
               <Route path="*" element={<NotFound/>} />
+              <Route path="/footer" element={<Footer/>} />
               
             </Routes>
           </BrowserRouter>

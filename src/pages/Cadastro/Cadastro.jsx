@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import {firebaseError}  from "../../firebase/firebaseError";
+import { Footer } from "../../components/Footer/Footer";
 
 
 export function Cadastro() {
@@ -19,19 +20,7 @@ export function Cadastro() {
     formState: { errors },
   } = useForm();
 
-  const [inputType, setInputType] = useState("password");
-  const [iconType, setIconType] = useState("bi bi-eye-slash");
-  function showPassword() {
-    if (inputType === "password") {
-      setInputType("text");
-      setIconType("bi bi-eye");
-    } else {
-      setInputType("password");
-      setIconType("bi bi-eye-slash");
-
-    }
-  }
-
+    
   const navigate = useNavigate();
 
   function onSubmit(data) {
@@ -144,6 +133,7 @@ export function Cadastro() {
           Cadastrar
         </Button>
       </Form>
+      <Footer/>
           </Container>
   );
  

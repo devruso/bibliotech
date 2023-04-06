@@ -1,59 +1,33 @@
-import { useEffect } from 'react';
-import { toast } from 'react-hot-toast';
-import { getAuth, onAuthStateChanged, sendEmailVerification } from "firebase/auth";
-import { firebaseError } from '../../firebase/firebaseError';
-import { Button } from 'react-bootstrap';
+import { emailVerif } from "../../firebase/auth";
+import { auth } from "../../firebase/config";
+import login from "../../assets/images/login.png"
 
 
+export function EmailVerification() {
+  const user = auth.currentUser
+  const userEmail = user ? user.email : "";
+  const isEmailVerified = user ? user.emailVerified : false;
+  const handleResendVerification = () => {
+    emailVerif(user)
+    alert("Email de verificação enviado. Verifique seu email e tente novamente.");
+  };
 
-
-export function EmailVerification () {
-  const auth = getAuth();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        if (user.emailVerified) {
-          window.location.href = "http://localhost:3000/";
+  if (!isEmailVerified) {
+    return(
+      <div className="card" >
+            <div className='vh-100 text-black bg-success p-3 mb-3 text-light d-flex flex-column align-items-center justify-content-center text-align-center' >
+            <div className="card w-25 h-50 card border-success mb-3 d-flex align-items-center justify-content-center text-align-center ">
+            <img className="card_img_top"style={{width: '250px'}}  src={login} alt="Imagem do card"></img>
           
-        }
-      }
-    });
+        <p className="mb-4 fs-5" > <strong> Email({userEmail}) ainda não foi verificado. Por favor, verifique seu email para liberar seu cadastro.</strong></p>
+        <button onClick={handleResendVerification}>Reenviar email de verificação</button>
+        </div>
+      </div>
+      </div>
+    );
 
-    return () => unsubscribe();
-  }, [auth]);
+}
 
-  const handleSendEmailVerification = () => {
-    sendEmailVerification(auth.currentUser)
-      .then(() => {
-        toast.success(`Verifique seu email para saber se sua conta foi confirmada: ${auth.actionCode.email}`, {
-          position: "bottom-right",
-          duration: 3000,
-        });
-        
-      })
-      .catch((erro) => {
-        toast.error(`Error.  ${firebaseError(erro.code)}`, {
-          position: "bottom-right",
-          duration: 3000,
-        });
-      });
-  }
+return <div>Seu email ({userEmail}) foi verificado.</div>;
 
-  return (
-    <div className='confirmacao' style={{ textAlign: 'center' }} >
-      <section>
-      
-      <h2 style={{color: 'black', fontSize: '22px',  marginTop: '15px'}} className='conclusao'>Conclusão de cadastro após confirmação de email:</h2>
-
-      <Button style={{backgroundColor: ' white;', color: 'rgb(189, 13, 13);' , display: 'inline-block', margin: '15px'}} variant="success" size="lg" onClick={handleSendEmailVerification}>
-            Enviar e-mail de confirmação
-      </Button>
-      
-        <h5 style={{color: 'black', fontSize: '22px',  marginBottom: '15px'}}className='mensagem-final'>Ao enviar a confirmação de email, verifique sua caixa de entrada e não esqueça de atualizar a página para efetuar o login. </h5>
-
-        </section>
-
-    </div>
-  );
 }
