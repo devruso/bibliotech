@@ -26,6 +26,7 @@ import { Chat } from "./pages/Chat/Chat";
 import { RecuperacaoSenha } from "./pages/RecuperacaoSenha/RecuperacaoSenha";
 import {EmailVerification} from "./pages/EmailVerification/EmailVerification"
 import { Loader } from "./components/Loader/Loader";
+import { BlogLista } from "./pages/BlogLista/BlogLista";
 
 
 export function App() {
@@ -74,6 +75,7 @@ export function App() {
                 <Route path="/perfil/usuario" element={<PerfilUsuario/>} />
                 <Route path="/footer" element={<Footer/>} />
                 <Route path="/chat" element={<Chat/>}/>
+                <Route path="/blog" element={<BlogLista></BlogLista>}></Route>
                 </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/recuperacao-senha" element={<RecuperacaoSenha />}/>
