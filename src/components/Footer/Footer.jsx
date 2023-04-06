@@ -65,7 +65,7 @@ export function Footer() {
             <div className="copyright">
                 <span className="rodape__texto"> © 2023 Copyright: SoulCode </span>
                 <ul className='copyright'>
-                    <li><a href="/PoliticaPrivacidade">Politica de Privacidade</a></li>
+                    <li><a href="/privacidade">Politica de Privacidade</a></li>
                     <li><a href="#">Termos e condições</a></li>
                 </ul>
             </div>
