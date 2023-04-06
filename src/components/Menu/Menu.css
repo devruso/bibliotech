@@ -29,3 +29,17 @@
         margin-left: 0px !important;
     }
 }
+
+@media (max-width: 991px){
+    .foto-perfil-nav{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 0.5px solid black;
+        transition: all 0.2s ease-in-out;
+        position: static;
+    }
+    .margim-left{
+        margin-left: 0px !important;
+    }
+}

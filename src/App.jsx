@@ -20,8 +20,13 @@ import { BemVindo } from "./pages/BemVindo/BemVindo";
 import { Quiz } from "./pages/Quiz/Quiz";
 import { Footer } from "./components/Footer/Footer";
 import NotFound from "./pages/NotFound/NotFound";
-import {EmailVerification} from "./pages/EmailVerification/EmailVerification"
+import { PoliticaPrivacidade } from "./pages/PoliticaPrivacidade/PoliticaPrivacidade";
+import { Ajuda } from "./pages/Ajuda/Ajuda";
+import { Chat } from "./pages/Chat/Chat";
+import { RecuperacaoSenha } from "./pages/RecuperacaoSenha/RecuperacaoSenha";
+import { EmailVerification } from "./pages/EmailVerification/EmailVerification"
 import { Loader } from "./components/Loader/Loader";
+import { BlogLista } from "./pages/BlogLista/BlogLista";
 
 
 export function App() {
@@ -43,7 +48,7 @@ export function App() {
     });
   }, []);
 
-    if (loading) {
+  if (loading) {
     return <Loader />;
   }
 
@@ -67,13 +72,19 @@ export function App() {
                 <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
                 <Route path="/quiz" element={<BemVindo></BemVindo>}>  </Route>
                 <Route path="/quiz/perguntas" element={<Quiz></Quiz>}></Route>
-                <Route path="/perfil/usuario" element={<PerfilUsuario/>} />
+                <Route path="/perfil/usuario" element={<PerfilUsuario />} />
+                <Route path="/footer" element={<Footer />} />
+                <Route path="/chat" element={<Chat />} />
+                <Route path="/blog" element={<BlogLista />} />
+                <Route path="/ajuda" element={<Ajuda />} />
                 </Route>
               <Route path="/login" element={<Login />} />
+              <Route path="/recuperacao-senha" element={<RecuperacaoSenha />} />
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/confirmaremail" element={<EmailVerification/>} />
               <Route path="*" element={<NotFound/>} />
               <Route path="/footer" element={<Footer/>} />
+              <Route path="/privacidade" element={<PoliticaPrivacidade />} />
               
             </Routes>
           </BrowserRouter>

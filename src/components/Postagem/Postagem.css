@@ -1,0 +1,25 @@
+.postagem{
+    background: rgba(#fff 0.8);
+    margin-top: 2%;
+    border: 1px solid rgb(25, 135, 84);
+    box-shadow: 1.5px 1px 25px 2px #198754;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    transform: scale(0.9);
+    padding: 3%;
+}
+div .postagem-imagem{
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    border: 1.5px solid black;
+}
+.postagem label{
+    font-weight: 600;
+}
+.btnPost{
+    align-items: end;
+}
+

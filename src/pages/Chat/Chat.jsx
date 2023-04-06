@@ -6,13 +6,18 @@ import { auth } from "../../firebase/config";
 import { enviarMensagem } from "../../firebase/mensagens";
 import { mensagensCollection } from "../../firebase/collections";
 import moment from 'moment';
+
+
 export function Chat() {
+
   const [mensagem, setMensagem] = useState([]);
   const [todasMensagens, setTodasMensagens] = useState([]);
+
   function scrollToBottom(){
     const descer = document.querySelector(".messageArea");
     descer.scrollTop = descer.scrollHeight;
   }
+
   function enviarMsg(e) {
     e.preventDefault();
     const novaMsg = {
@@ -42,8 +47,6 @@ export function Chat() {
   const usuarioAtual = auth.currentUser.displayName;
   return (
     <Container>
-
-      {/* <h1 className="chatName">Bibliotech Chat</h1> */}
       <div className="messageArea">
         {todasMensagens.map((el) => {
           
