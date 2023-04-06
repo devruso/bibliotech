@@ -30,7 +30,7 @@ return (
       {postagens.map((postagem) => {
         return (
           <>
-          <Container>
+          <Container className="vh-100">
             <Toast className="mb-2">
             <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} postagens`}>
               <Toast.Header>

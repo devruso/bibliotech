@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { adicionarEmprestimo } from "../../firebase/emprestimos";
 import { getLivro, getLivros } from "../../firebase/livros"
 import { ThemeContext } from "../../contexts/ThemeContext";
+import "./AdicionarEmprestimo.css"
 
 export function AdicionarEmprestimo() {
 

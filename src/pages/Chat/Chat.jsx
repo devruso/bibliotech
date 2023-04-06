@@ -46,7 +46,7 @@ export function Chat() {
 
   const usuarioAtual = auth.currentUser.displayName;
   return (
-    <Container>
+    <Container className="chat">
       <div className="messageArea">
         {todasMensagens.map((el) => {
           

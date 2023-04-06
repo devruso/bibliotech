@@ -7,6 +7,7 @@ import { db } from "../../firebase/config";
 import { Loader } from "../../components/Loader/Loader";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import "./Emprestimos.css"
 
 export function Emprestimos() {
 

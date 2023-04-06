@@ -3,6 +3,7 @@ import Quiz1 from "../../assets/images/quiz.png"
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import "./BemVindo.css"
 
 export function BemVindo() {
 
@@ -16,8 +17,8 @@ export function BemVindo() {
 
   return (
 
-    <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} bemvindo`}>
-    <Container className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} bemvindo`} style={{ maxWidth: '600px', margin: 'auto' }}>
+    <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} bemvindo d-flex justify-content-center `}>
+    <Container className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"}`} style={{ maxWidth: '600px', margin: 'auto' }}>
       <div className="quiz my-5 text-center">
         <h2>Seja bem vindo(a) ao nosso quiz!</h2>
         <p><img src={Quiz1} alt="inicio-quiz" /></p>

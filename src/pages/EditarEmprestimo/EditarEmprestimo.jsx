@@ -7,6 +7,7 @@ import { getEmprestimo, updateEmprestimo } from "../../firebase/emprestimos";
 import { getLivro, getLivros } from "../../firebase/livros"
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import "./EditarEmprestimo.css"
 
 export function EditarEmprestimo() {
 
