@@ -38,7 +38,7 @@ export function Home() {
 
   return (
     
-    <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} home d-flex flex-column`}>
+    <div className={`${temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} home d-flex flex-column vh-100`}>
       <h3 className="text-center pt-4">Visão geral</h3> <hr />
       <CardGroup className="align-self-center">
         <Card className="text-center m-2 p-3 border bg-light " style={{ maxWidth: '18rem', maxHeight: 'auto' }}>
