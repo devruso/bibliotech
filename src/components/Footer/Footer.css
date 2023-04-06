@@ -1,12 +1,11 @@
 footer {
-   background-color:rgb(25, 135, 84) ;
-   position: fixed;
-  bottom: 0;
-  width: 100%;
-  
+   background-color: rgb(25, 135, 84);
+   bottom: 0;
+   width: 100%;
+   margin-top: 20px;
 }
 
-.rodape_painel{
+.rodape_painel {
    align-items: center;
    text-align: center;
 }
@@ -16,42 +15,63 @@ ul {
    flex-direction: column;
    justify-content: flex-end;
    box-sizing: border-box;
-   margin:0px;
-   text-decoration: none; 
- }
+   margin: 0px;
+   text-decoration: none;
+}
 
-.ul_interior{
+.ul_interior {
    display: flex;
    justify-content: center;
    list-style-type: none;
-   margin-bottom: 24px;
-   
 }
 
 li {
    list-style-type: none;
    display: inline;
-    
- }
- 
- a:link {
-   color:white;
- }
 
- a:visited {
-   text-decoration: none;
-   decoration: none; 
- }
- 
-.rede_social{
-
-   display: inline;
-   box-sizing: border-box;
-   
 }
 
-   .lazyloaded{
-      margin:10px;
+a:link {
+   color: white;
+}
 
-   }
+a:visited {
+   text-decoration: none;
+}
 
+.rede_social {
+   display: inline;
+   box-sizing: border-box;
+}
+
+.rede_social li{
+   margin-right: 5px;
+}
+.downloadapp{
+   display: flex;
+   flex-direction: row;
+   text-align: center;
+   justify-content: center;
+   text-align: center;
+   margin-bottom: 0px !important;
+}
+
+.downloadapp li{
+   margin-top: 2px;
+   margin-right: 5px;
+}
+
+.copyright{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+}
+
+
+.downloadapp-margin{
+   margin-bottom: 0px !important;
+}
+
+.downloadapp-margin li{
+   font-weight: 500;
+}
