@@ -1,27 +1,57 @@
-
-.header-footer {
-   bottom: 0;
-   background-color:rgb(23, 122, 23);
-   color:white;
-   font-family:Arial, Helvetica, sans-serif;
-   width: 100%;
-   margin-top: 30%;
+footer {
+   background-color:rgb(25, 135, 84) ;
+   position: fixed;
+  bottom: 0;
+  width: 100%;
+  
 }
 
-.redes_sociais {
-   bottom: 0;
-   color:white;
-   font-family:Arial, Helvetica, sans-serif;
+.rodape_painel{
+   align-items: center;
+   text-align: center;
 }
 
+ul {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   box-sizing: border-box;
+   margin:0px;
+   text-decoration: none; 
+ }
 
-.copy {
-   color:white;
+.ul_interior{
+   display: flex;
+   justify-content: center;
+   list-style-type: none;
+   margin-bottom: 24px;
+   
 }
 
-
-a:link {
+li {
+   list-style-type: none;
+   display: inline;
+    
+ }
+ 
+ a:link {
    color:white;
+ }
+
+ a:visited {
+   text-decoration: none;
+   decoration: none; 
+ }
+ 
+.rede_social{
+
+   display: inline;
+   box-sizing: border-box;
+   
 }
 
+   .lazyloaded{
+      margin:10px;
+
+   }
 

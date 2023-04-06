@@ -18,9 +18,9 @@ const NotFound = () => {
 
       <div className="button">
 
-      <Button variant="green" href="/">Voltar</Button>
-      <Button variant="green" href="/login">Login</Button>
-      <Button variant="dark" onClick={openModal}>Reportar </Button>
+      <Button variant="green" href="/" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar</Button>
+      <Button variant="green" href="/login" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Login</Button>
+      <Button variant="dark" onClick={openModal} className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Reportar </Button>
       </div>
 
       <Modal show={show} onHide={closeModal}>
@@ -41,7 +41,7 @@ const NotFound = () => {
 
             </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={closeModal}>
+            <Button  variant="secondary" onClick={closeModal}>
               Close
             </Button>
             <Button variant="primary" onClick={closeModal}>

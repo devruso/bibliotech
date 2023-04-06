@@ -5,10 +5,12 @@ import {
   signInWithPopup,
   signOut,
   FacebookAuthProvider,
-  GithubAuthProvider
+  GithubAuthProvider,
+  sendEmailVerification
 
 } from "firebase/auth";
 import { auth } from "./config";
+import { and } from "firebase/firestore";
 import { usersCollection } from "./collections";
 import {doc, getDoc, setDoc} from "firebase/firestore"
 
@@ -71,10 +73,17 @@ export async function loginEmailSenha(email, senha) {
   // Vai realizar o login com uma conta de email já existente
   const resultado = await signInWithEmailAndPassword(auth, email, senha);
 
-  return resultado.user;
+  if (resultado.user.emailVerified === false) {
+    emailVerif(resultado.user)
+  }
+  return resultado.user
 }
 
 export async function logout() {
   // Deslogar o usuário atual do firebase
   await signOut(auth);
+}
+
+export async function emailVerif(user) {
+  await sendEmailVerification(user);
 }

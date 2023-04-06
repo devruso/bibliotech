@@ -77,13 +77,15 @@ export function App() {
                 <Route path="/chat" element={<Chat />} />
                 <Route path="/blog" element={<BlogLista />} />
                 <Route path="/ajuda" element={<Ajuda />} />
-              </Route>
+                </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/recuperacao-senha" element={<RecuperacaoSenha />} />
               <Route path="/cadastro" element={<Cadastro />} />
-              <Route path="/confirmaremail" element={<EmailVerification />} />
-              <Route path="*" element={<NotFound />} />
+              <Route path="/confirmaremail" element={<EmailVerification/>} />
+              <Route path="*" element={<NotFound/>} />
+              <Route path="/footer" element={<Footer/>} />
               <Route path="/privacidade" element={<PoliticaPrivacidade />} />
+              
             </Routes>
           </BrowserRouter>
         </AuthContext.Provider>
